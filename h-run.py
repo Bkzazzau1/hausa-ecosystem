@@ -60,7 +60,17 @@ jama'a aiki main() {
 }
 
 
+def configure_output_encoding():
+    """Use UTF-8 for Hausa characters on Windows terminals and subprocess pipes."""
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(encoding="utf-8")
+        except (AttributeError, ValueError):
+            pass
+
+
 def main(argv=None):
+    configure_output_encoding()
     args = list(sys.argv[1:] if argv is None else argv)
 
     if not args or args[0] in ("-h", "--help", "help"):
