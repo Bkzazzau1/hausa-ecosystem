@@ -1,3 +1,4 @@
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -7,11 +8,16 @@ CLI = ROOT_DIR / "h-run.py"
 
 
 def run_cli(*args, cwd=ROOT_DIR):
+    env = os.environ.copy()
+    env["PYTHONIOENCODING"] = "utf-8"
+
     return subprocess.run(
         [sys.executable, str(CLI), *args],
         cwd=cwd,
         capture_output=True,
         text=True,
+        encoding="utf-8",
+        env=env,
     )
 
 
