@@ -29,6 +29,7 @@ hausa-ecosystem/
 ├── templates/
 │   ├── gwaji.hausa          # Hausa Python example
 │   └── gwaji.hrust          # Hausa Rust example
+├── tests/                   # Automated pytest tests
 ├── h-run.py                 # Main command-line runner
 ├── install_extension.py     # Local VS Code extension installer
 └── update_vs_extension.py   # Rebuilds extension syntax keywords
@@ -89,6 +90,22 @@ python install_extension.py
 
 Then restart VS Code and open any `.hausa` or `.hrust` file.
 
+## Run automated tests
+
+Install the development test dependency:
+
+```bash
+pip install -r requirements-dev.txt
+```
+
+Run the full test suite:
+
+```bash
+python -m pytest
+```
+
+The Rust execution test runs only when `rustc` is installed. If Rust is not installed, that test is skipped instead of failing.
+
 ## Update VS Code syntax rules
 
 When new Hausa keywords are added to `core/dictionary.py`, run:
@@ -109,7 +126,6 @@ This updates the TextMate grammar files inside `extensions/vscode-hausa/syntaxes
 ## Roadmap
 
 - Package the runner as a proper CLI command
-- Add automated tests for Python and Rust translation
 - Add more beginner examples in Hausa
 - Improve Rust translation so strings and comments are preserved more safely
 - Prepare the VS Code extension for marketplace publishing
