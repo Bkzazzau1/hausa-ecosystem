@@ -14,11 +14,91 @@ REVERSE_RUST_KEYWORDS = {v: k for k, v in RUST_KEYWORDS.items()}
 
 
 def translate_logic(text, mapping):
-    """Safely translates keywords using strict word boundaries to prevent bugs."""
-    for key in sorted(mapping.keys(), key=len, reverse=True):
-        pattern = r'\b' + re.escape(key) + r'\b'
-        text = re.sub(pattern, mapping[key], text)
-    return text
+    """Translate Rust identifiers without touching strings or comments."""
+    output = []
+    index = 0
+    length = len(text)
+
+    while index < length:
+        char = text[index]
+        next_char = text[index + 1] if index + 1 < length else ""
+
+        if char == '"':
+            segment, index = consume_quoted_string(text, index, '"')
+            output.append(segment)
+            continue
+
+        if char == "'":
+            segment, index = consume_quoted_string(text, index, "'")
+            output.append(segment)
+            continue
+
+        if char == "/" and next_char == "/":
+            segment, index = consume_line_comment(text, index)
+            output.append(segment)
+            continue
+
+        if char == "/" and next_char == "*":
+            segment, index = consume_block_comment(text, index)
+            output.append(segment)
+            continue
+
+        if is_identifier_start(char):
+            identifier, index = consume_identifier(text, index)
+            output.append(mapping.get(identifier, identifier))
+            continue
+
+        output.append(char)
+        index += 1
+
+    return "".join(output)
+
+
+def is_identifier_start(char):
+    return char == "_" or char == "'" or char.isalpha()
+
+
+def is_identifier_part(char):
+    return char == "_" or char == "'" or char.isalnum()
+
+
+def consume_identifier(text, start):
+    index = start
+    while index < len(text) and is_identifier_part(text[index]):
+        index += 1
+    return text[start:index], index
+
+
+def consume_quoted_string(text, start, quote):
+    index = start + 1
+    escaped = False
+
+    while index < len(text):
+        char = text[index]
+        if escaped:
+            escaped = False
+        elif char == "\\":
+            escaped = True
+        elif char == quote:
+            index += 1
+            break
+        index += 1
+
+    return text[start:index], index
+
+
+def consume_line_comment(text, start):
+    index = text.find("\n", start)
+    if index == -1:
+        return text[start:], len(text)
+    return text[start:index], index
+
+
+def consume_block_comment(text, start):
+    index = text.find("*/", start + 2)
+    if index == -1:
+        return text[start:], len(text)
+    return text[start:index + 2], index + 2
 
 
 def hrust_to_english(hrust_code):
