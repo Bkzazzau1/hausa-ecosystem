@@ -19,7 +19,7 @@
     },
     {
       "name": "keyword.control.hausa",
-      "match": "\\b(buga|shigar|idan|sauran_idan|in_ba_haka_ba|ga|cikin|yayin|tsaya|wuce|aiki|mayar|aji|kamar|babban_gari|ba_na_ciki|goge|dace|hali|gwada|kama|karshe|tada|tabbatar|tare_da|daga|shigo|karya|gaskiya|babu|kuma|ko|ba|shi_ne|babu_guda|jira|alamun_haske|wuce_kawai|lamba|lamba_dige|rubutu|jeri|makullai|bude_rufa|binciko|saka_cikin|sabunta|goge_daga|tebur|kunshe_bayanai|takarda|nemo_guda|saka_guda|Abokin_Hadin_Mongo|Injin_Yanar_Gizo|bude_hanya|bukata|buƙata|amsa|tsarin_bayanai|juya_zuwa_json|rufe_sirri)\\b"
+      "match": "\\b(buga|shigar|idan|sauran_idan|in_ba_haka_ba|lamba|lamba_dige|rubutu|jeri|makullai|saiti|biyu_biyu|bude_rufa|binciko|saka_cikin|sabunta|goge_daga|tebur|Abokin_Hadin_Mongo|kunshe_bayanai|takarda|nemo_guda|saka_guda|samu_cursor|aiwatar|aiwatar_da_yawa|karba_guda|karba_duka|ajiye|janye|rufe|layuka|sabon_id|tace|tace_da|farko|duka|kirkiro|adana|nemo|nemo_ko_404|shafi|oda_da|hawa|sauka|Injin_Yanar_Gizo|bude_hanya|bukata|buƙata|amsa|tsarin_bayanai|juya_zuwa_json|rufe_sirri|karanta_json|samu|aika|saka|gyara_sashe|goge_hanya|Saurin_API|Mai_Hanya|Kuskuren_HTTP|Dogaro|Matsayi|Tushen_Model|Filin|Sabar_Uvicorn|gudanar|ga|cikin|yayin|tsaya|wuce|aiki|mayar|aji|kamar|babban_gari|ba_na_ciki|goge|dace|hali|gwada|kama|karshe|tada|tabbatar|tare_da|daga|shigo|karya|gaskiya|babu|kuma|ko|ba|shi_ne|babu_guda|jira|alamun_haske|wuce_kawai)\\b"
     }
   ]
 }
