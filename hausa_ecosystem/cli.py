@@ -6,6 +6,7 @@ from core.database import load_dictionary_from_db
 from core.python_engine import english_to_hausa, hausa_to_english, run_hausa_code
 from core.rust_engine import english_to_hrust, hrust_to_english, run_rust_code
 from hausa_ecosystem import __version__
+from hausa_ecosystem.project_generators import create_project, is_project_generator_request
 
 STARTER_TEMPLATES = {
     "python": {
@@ -84,16 +85,9 @@ def main(argv=None):
     if args[0] == "new":
         return run_new_command(args[1:])
 
-    # Modern output mode:
-    #   hausa to-en input.hausa -o output.py
-    #   hausa to-ha input.py -o output.hausa
     if len(args) == 4 and args[2] == "-o" and args[0] in ("to-en", "to-ha"):
         return run_command(args[0], args[1], output_file=args[3])
 
-    # Legacy support:
-    #   hausa --translate file.hausa
-    #   hausa file.hausa --translate
-    #   hausa file.hausa -o output.py
     if len(args) == 2 and args[0] == "--translate":
         return run_command("to-en", args[1])
 
@@ -179,8 +173,11 @@ def run_keywords_command(args):
 
 
 def run_new_command(args):
+    if is_project_generator_request(args):
+        return create_project(args)
+
     if len(args) != 2 or args[0] not in STARTER_TEMPLATES:
-        print("Kuskure: Yi amfani da: hausa new python app.hausa  ko  hausa new rust app.hrust")
+        print("Kuskure: Yi amfani da: hausa new python app.hausa  ko  hausa new backend flask my_api")
         return 1
 
     language, output_file = args
@@ -259,6 +256,9 @@ def print_usage():
     print("  Version:             hausa --version")
     print("  Sabon Hausa Python:  hausa new python app.hausa")
     print("  Sabon Hausa Rust:    hausa new rust app.hrust")
+    print("  Sabon Flask API:     hausa new backend flask my_api")
+    print("  Sabon FastAPI API:   hausa new backend fastapi my_api")
+    print("  Sabon SQLite App:    hausa new database sqlite my_db_app")
     print("  Keywords Python:     hausa keywords python")
     print("  Keywords Rust:       hausa keywords rust")
     print("\nPYTHON:")
