@@ -43,6 +43,50 @@ pub fn main() {
     assert "idan gaskiya" in translated
 
 
+def test_hausa_rust_translation_preserves_strings_and_comments():
+    source = '''
+// idan gaskiya should stay inside comment
+jama'a aiki main() {
+    bari sako = "idan gaskiya should stay inside string";
+    /* bari sauya should stay inside block comment */
+    idan gaskiya {
+        println!("{}", sako);
+    }
+}
+'''
+
+    translated = hrust_to_english(source)
+
+    assert "// idan gaskiya should stay inside comment" in translated
+    assert '"idan gaskiya should stay inside string"' in translated
+    assert "/* bari sauya should stay inside block comment */" in translated
+    assert "pub fn main()" in translated
+    assert "let sako" in translated
+    assert "if true" in translated
+
+
+def test_standard_rust_translation_preserves_strings_and_comments():
+    source = '''
+// if true should stay inside comment
+pub fn main() {
+    let message = "if true should stay inside string";
+    /* let mut should stay inside block comment */
+    if true {
+        println!("{}", message);
+    }
+}
+'''
+
+    translated = english_to_hrust(source)
+
+    assert "// if true should stay inside comment" in translated
+    assert '"if true should stay inside string"' in translated
+    assert "/* let mut should stay inside block comment */" in translated
+    assert "jama'a aiki main()" in translated
+    assert "bari message" in translated
+    assert "idan gaskiya" in translated
+
+
 @pytest.mark.skipif(shutil.which("rustc") is None, reason="rustc is not installed")
 def test_hausa_rust_runner_executes_file(tmp_path, capsys):
     test_file = tmp_path / "gwaji.hrust"
