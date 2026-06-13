@@ -9,6 +9,7 @@ requires-python = ">=3.10"
 
 [project.scripts]
 hausa = "hausa_ecosystem.cli:main"
+hausa-check = "hausa_ecosystem.check_cli:main"
 
 [tool.setuptools.packages.find]
 include = ["core", "hausa_ecosystem"]
