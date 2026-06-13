@@ -10,6 +10,7 @@ The project currently supports:
 - English-to-Hausa code translation
 - Hausa-localized runtime and compiler error messages
 - A Visual Studio Code extension for syntax highlighting
+- Developer-friendly CLI helpers for starter files, keyword lookup, and output files
 
 ## Why this project matters
 
@@ -44,6 +45,36 @@ hausa-ecosystem/
 
 ## Basic usage
 
+Check CLI version:
+
+```bash
+python h-run.py --version
+```
+
+Create a new Hausa Python starter file:
+
+```bash
+python h-run.py new python app.hausa
+```
+
+Create a new Hausa Rust starter file:
+
+```bash
+python h-run.py new rust app.hrust
+```
+
+List available Hausa Python keywords:
+
+```bash
+python h-run.py keywords python
+```
+
+List available Hausa Rust keywords:
+
+```bash
+python h-run.py keywords rust
+```
+
 Run a Hausa Python file:
 
 ```bash
@@ -56,10 +87,22 @@ Translate Hausa Python to normal Python:
 python h-run.py to-en templates/gwaji.hausa
 ```
 
+Translate Hausa Python to a Python output file:
+
+```bash
+python h-run.py to-en templates/gwaji.hausa -o output.py
+```
+
 Translate normal Python to Hausa Python:
 
 ```bash
 python h-run.py to-ha example.py
+```
+
+Translate normal Python to a Hausa output file:
+
+```bash
+python h-run.py to-ha example.py -o output.hausa
 ```
 
 Run a Hausa Rust file:
@@ -74,10 +117,22 @@ Translate Hausa Rust to normal Rust:
 python h-run.py to-en templates/gwaji.hrust
 ```
 
+Translate Hausa Rust to a Rust output file:
+
+```bash
+python h-run.py to-en templates/gwaji.hrust -o output.rs
+```
+
 Translate normal Rust to Hausa Rust:
 
 ```bash
 python h-run.py to-ha example.rs
+```
+
+Translate normal Rust to a Hausa Rust output file:
+
+```bash
+python h-run.py to-ha example.rs -o output.hrust
 ```
 
 ## Install the VS Code extension locally
