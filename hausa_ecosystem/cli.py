@@ -7,6 +7,7 @@ from core.python_engine import english_to_hausa, hausa_to_english, run_hausa_cod
 from core.rust_engine import english_to_hrust, hrust_to_english, run_rust_code
 from hausa_ecosystem import __version__
 from hausa_ecosystem.api_checker import run_api_tests
+from hausa_ecosystem.doctor import run_doctor
 from hausa_ecosystem.project_generators import create_project, is_project_generator_request
 
 STARTER_TEMPLATES = {
@@ -79,6 +80,9 @@ def main(argv=None):
     if args[0] in ("-v", "--version", "version"):
         print(f"Hausa Ecosystem CLI {__version__}")
         return 0
+
+    if args[0] == "doctor":
+        return run_doctor(args[1:])
 
     if args[0] == "keywords":
         return run_keywords_command(args[1:])
@@ -258,6 +262,7 @@ def print_usage():
     print("\nBASIC:")
     print("  Taimako:             hausa --help")
     print("  Version:             hausa --version")
+    print("  Doctor:              hausa doctor")
     print("  Sabon Hausa Python:  hausa new python app.hausa")
     print("  Sabon Hausa Rust:    hausa new rust app.hrust")
     print("  Sabon Flask API:     hausa new backend flask my_api")
