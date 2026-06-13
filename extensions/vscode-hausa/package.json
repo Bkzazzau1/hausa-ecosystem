@@ -1,8 +1,8 @@
 {
   "name": "vscode-hausa",
   "displayName": "Hausa Programming Language Support",
-  "description": "Syntax highlighting and language support for Hausa-Python and Hausa-Rust.",
-  "version": "1.0.0",
+  "description": "Syntax highlighting, snippets and language support for Hausa-Python and Hausa-Rust.",
+  "version": "1.1.0",
   "engines": {
     "vscode": "^1.80.0"
   },
@@ -34,6 +34,16 @@
         "language": "hrust",
         "scopeName": "source.hrust",
         "path": "./syntaxes/hrust.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "hausa",
+        "path": "./snippets/hausa.code-snippets"
+      },
+      {
+        "language": "hrust",
+        "path": "./snippets/hrust.code-snippets"
       }
     ]
   }
