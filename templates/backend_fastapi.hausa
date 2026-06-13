@@ -1,0 +1,47 @@
+# Misalin modern backend API da Hausa Python + FastAPI
+# Bukata: pip install fastapi uvicorn
+
+daga fastapi shigo Saurin_API, Kuskuren_HTTP
+daga pydantic shigo Tushen_Model
+shigo Sabar_Uvicorn
+
+app = Saurin_API(title="Hausa Backend API")
+
+
+aji Dalibi(Tushen_Model):
+    suna: rubutu
+    darasi: rubutu
+
+
+dalibai = []
+
+
+@app.samu("/")
+aiki gida():
+    mayar {"sako": "Hausa FastAPI Backend yana aiki"}
+
+
+@app.samu("/dalibai")
+aiki duk_dalibai():
+    mayar dalibai
+
+
+@app.aika("/dalibai", status_code=201)
+aiki kirkiri_dalibi(dalibi: Dalibi):
+    sabon_dalibi = dalibi.makullai()
+    sabon_dalibi["id"] = len(dalibai) + 1
+    dalibai.append(sabon_dalibi)
+    mayar sabon_dalibi
+
+
+@app.samu("/dalibai/{dalibi_id}")
+aiki samu_dalibi(dalibi_id: lamba):
+    ga dalibi cikin dalibai:
+        idan dalibi["id"] == dalibi_id:
+            mayar dalibi
+
+    tada Kuskuren_HTTP(status_code=404, detail="Ba a sami dalibi ba")
+
+
+idan __name__ == "__main__":
+    Sabar_Uvicorn.gudanar(app, host="127.0.0.1", port=8000)
