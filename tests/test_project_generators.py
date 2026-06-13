@@ -25,11 +25,18 @@ def test_generate_flask_backend_project(tmp_path):
 
     result = run_package_cli("new", "backend", "flask", str(project_dir))
 
+    app_content = (project_dir / "app.hausa").read_text(encoding="utf-8")
+
     assert result.returncode == 0
     assert (project_dir / "app.hausa").exists()
     assert (project_dir / "requirements.txt").read_text(encoding="utf-8") == "flask\n"
-    assert "Injin_Yanar_Gizo" in (project_dir / "app.hausa").read_text(encoding="utf-8")
-    assert "bude_rufa" in (project_dir / "app.hausa").read_text(encoding="utf-8")
+    assert "Injin_Yanar_Gizo" in app_content
+    assert "bude_rufa" in app_content
+    assert "methods=[\"POST\"]" in app_content
+    assert "methods=[\"PUT\"]" in app_content
+    assert "methods=[\"DELETE\"]" in app_content
+    assert "sabunta_abu" in app_content
+    assert "goge_abu" in app_content
 
 
 def test_generate_fastapi_backend_project(tmp_path):
@@ -37,12 +44,19 @@ def test_generate_fastapi_backend_project(tmp_path):
 
     result = run_package_cli("new", "backend", "fastapi", str(project_dir))
 
+    app_content = (project_dir / "app.hausa").read_text(encoding="utf-8")
+    requirements = (project_dir / "requirements.txt").read_text(encoding="utf-8")
+
     assert result.returncode == 0
     assert (project_dir / "app.hausa").exists()
-    requirements = (project_dir / "requirements.txt").read_text(encoding="utf-8")
     assert "fastapi" in requirements
     assert "uvicorn" in requirements
-    assert "Saurin_API" in (project_dir / "app.hausa").read_text(encoding="utf-8")
+    assert "Saurin_API" in app_content
+    assert "@app.aika" in app_content
+    assert "@app.saka" in app_content
+    assert "@app.goge_hanya" in app_content
+    assert "sabunta_abu" in app_content
+    assert "goge_abu" in app_content
 
 
 def test_generate_sqlite_database_project_and_run_it(tmp_path):
@@ -50,15 +64,24 @@ def test_generate_sqlite_database_project_and_run_it(tmp_path):
 
     result = run_package_cli("new", "database", "sqlite", str(project_dir))
 
+    app_content = (project_dir / "app.hausa").read_text(encoding="utf-8")
+
     assert result.returncode == 0
     assert (project_dir / "app.hausa").exists()
-    assert "bude_rufa" in (project_dir / "app.hausa").read_text(encoding="utf-8")
+    assert "bude_rufa" in app_content
+    assert "kirkiri_abu" in app_content
+    assert "samu_abu" in app_content
+    assert "sabunta_abu" in app_content
+    assert "goge_abu" in app_content
 
     run_result = run_package_cli("run", "app.hausa", cwd=project_dir)
 
     assert run_result.returncode == 0
+    assert "Bayan kirkira" in run_result.stdout
     assert "Abu na farko" in run_result.stdout
     assert "Abu na biyu" in run_result.stdout
+    assert "Bayan sabuntawa da gogewa" in run_result.stdout
+    assert "Abu na farko da aka sabunta" in run_result.stdout
     assert (project_dir / "app.db").exists()
 
 
