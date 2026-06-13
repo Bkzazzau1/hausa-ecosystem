@@ -1,0 +1,61 @@
+{
+  "Hausa Print": {
+    "prefix": "buga",
+    "body": [
+      "buga(\"${1:Sannu duniya}\")"
+    ],
+    "description": "Print a message in Hausa Python"
+  },
+  "Hausa If Block": {
+    "prefix": "idan",
+    "body": [
+      "idan ${1:gaskiya}:",
+      "    ${2:buga(\"Yana aiki\")}"
+    ],
+    "description": "Create an if block"
+  },
+  "Hausa Function": {
+    "prefix": "aiki",
+    "body": [
+      "aiki ${1:suna_aiki}(${2}):",
+      "    ${3:mayar babu}"
+    ],
+    "description": "Create a Hausa Python function"
+  },
+  "SQLite Starter": {
+    "prefix": "sqlite",
+    "body": [
+      "daga sqlite3 shigo bude_rufa",
+      "",
+      "hadi = bude_rufa(\"${1:app.db}\")",
+      "mai_aiki = hadi.samu_cursor()",
+      "mai_aiki.aiwatar(\"\"\"",
+      "    CREATE TABLE IF NOT EXISTS ${2:abubuwa} (",
+      "        id INTEGER PRIMARY KEY AUTOINCREMENT,",
+      "        suna TEXT NOT NULL",
+      "    )",
+      "\"\"\")",
+      "hadi.ajiye()",
+      "hadi.rufe()"
+    ],
+    "description": "Create a SQLite starter block"
+  },
+  "Flask Route": {
+    "prefix": "flask-route",
+    "body": [
+      "@injin.bude_hanya(\"/${1:hanya}\", methods=[\"${2:GET}\"])",
+      "aiki ${3:suna_aiki}():",
+      "    mayar juya_zuwa_json({\"sako\": \"${4:Yana aiki}\"})"
+    ],
+    "description": "Create a Flask route"
+  },
+  "FastAPI Route": {
+    "prefix": "fastapi-route",
+    "body": [
+      "@app.samu(\"/${1:hanya}\")",
+      "aiki ${2:suna_aiki}():",
+      "    mayar {\"sako\": \"${3:Yana aiki}\"}"
+    ],
+    "description": "Create a FastAPI route"
+  }
+}
