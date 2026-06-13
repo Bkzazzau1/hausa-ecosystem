@@ -9,6 +9,12 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
 def run_package_cli(*args, cwd=ROOT_DIR):
     env = os.environ.copy()
     env["PYTHONIOENCODING"] = "utf-8"
+    existing_pythonpath = env.get("PYTHONPATH")
+    env["PYTHONPATH"] = (
+        str(ROOT_DIR)
+        if not existing_pythonpath
+        else str(ROOT_DIR) + os.pathsep + existing_pythonpath
+    )
 
     return subprocess.run(
         [sys.executable, "-m", "hausa_ecosystem.cli", *args],
