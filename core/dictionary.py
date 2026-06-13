@@ -15,6 +15,8 @@ PYTHON_KEYWORDS = {
     "rubutu": "str",
     "jeri": "list",
     "makullai": "dict",
+    "saiti": "set",
+    "biyu_biyu": "tuple",
 
     # SQL & NoSQL Database Engine Keywords
     "bude_rufa": "connect",
@@ -29,6 +31,32 @@ PYTHON_KEYWORDS = {
     "nemo_guda": "find_one",
     "saka_guda": "insert_one",
 
+    # Practical SQLite / database method names
+    "samu_cursor": "cursor",
+    "aiwatar": "execute",
+    "aiwatar_da_yawa": "executemany",
+    "karba_guda": "fetchone",
+    "karba_duka": "fetchall",
+    "ajiye": "commit",
+    "janye": "rollback",
+    "rufe": "close",
+    "layuka": "rowcount",
+    "sabon_id": "lastrowid",
+
+    # Common ORM / query builder vocabulary
+    "tace": "filter",
+    "tace_da": "filter_by",
+    "farko": "first",
+    "duka": "all",
+    "kirkiro": "create",
+    "adana": "save",
+    "nemo": "find",
+    "nemo_ko_404": "get_or_404",
+    "shafi": "paginate",
+    "oda_da": "order_by",
+    "hawa": "asc",
+    "sauka": "desc",
+
     # Full-Backend Routing & HTTP Server Keywords
     "Injin_Yanar_Gizo": "Flask",
     "bude_hanya": "route",
@@ -38,6 +66,23 @@ PYTHON_KEYWORDS = {
     "tsarin_bayanai": "dict",
     "juya_zuwa_json": "jsonify",
     "rufe_sirri": "hashlib",
+    "karanta_json": "get_json",
+    "samu": "get",
+    "aika": "post",
+    "saka": "put",
+    "gyara_sashe": "patch",
+    "goge_hanya": "delete",
+
+    # FastAPI / modern backend vocabulary
+    "Saurin_API": "FastAPI",
+    "Mai_Hanya": "APIRouter",
+    "Kuskuren_HTTP": "HTTPException",
+    "Dogaro": "Depends",
+    "Matsayi": "status",
+    "Tushen_Model": "BaseModel",
+    "Filin": "Field",
+    "Sabar_Uvicorn": "uvicorn",
+    "gudanar": "run",
 
     # Loops & Controls
     "ga": "for",
@@ -160,6 +205,7 @@ PYTHON_ERRORS = {
     "ZeroDivisionError": "Kuskuren Raba Lamba - Ba za a iya raba lamba da sifili (0) ba (ZeroDivisionError)",
     "ModuleNotFoundError": "Ba a sami wannan kunshin (Library) dake cikin shirinka ba (ModuleNotFoundError)",
     "OperationalError": "Kuskuren tafiyar da Database (OperationalError)",
+    "IntegrityError": "Kuskuren ka'idar Database - bayanin ya karya sharadin tebur (IntegrityError)",
     "IndexError": "Kuskuren Jeri - Gurbin da kake nema a cikin jeri (List) bai wanzu ba (IndexError)",
     "KeyError": "Kuskuren Makulli - Makullin (Key) da kake nema a Dictionary bai wanzu ba (KeyError)",
     "AttributeError": "Kuskuren Kaddara - Wannan aji (Class) din ba shi da wannan kaddarar (AttributeError)",
@@ -169,6 +215,8 @@ PYTHON_ERRORS = {
     "invalid syntax": "tsarin rubutunka yana da kuskure gaba daya",
     "division by zero": "ba za a iya raba lamba da sifili (0) ba",
     "unexpected indent": "an sami tazarar layi mara kyau da ba a gata ba",
+    "no such table": "ba a sami wannan teburin a database ba",
+    "UNIQUE constraint failed": "an karya ka'idar UNIQUE a database",
 }
 
 # Comprehensive Rust Compiler Warnings & Error Sub-strings
