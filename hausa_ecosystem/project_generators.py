@@ -7,7 +7,7 @@ PROJECT_GENERATOR_USAGE = (
     "  hausa new database sqlite my_db_app"
 )
 
-FLASK_APP = '''# Hausa Flask backend project
+FLASK_APP = '''# Hausa Flask backend CRUD project
 # Run: hausa run app.hausa
 
 daga flask shigo Injin_Yanar_Gizo, juya_zuwa_json, bukata
@@ -30,9 +30,24 @@ aiki samun_hadi():
     mayar hadi
 
 
+aiki maida_abu(layi):
+    idan ba layi:
+        mayar babu
+    mayar {"id": layi[0], "suna": layi[1]}
+
+
+aiki nemo_abu_daga_db(abu_id):
+    hadi = samun_hadi()
+    mai_aiki = hadi.samu_cursor()
+    mai_aiki.aiwatar("SELECT id, suna FROM abubuwa WHERE id = ?", (abu_id,))
+    abu = maida_abu(mai_aiki.karba_guda())
+    hadi.rufe()
+    mayar abu
+
+
 @injin.bude_hanya("/", methods=["GET"])
 aiki gida():
-    mayar juya_zuwa_json({"sako": "Hausa Flask backend yana aiki"})
+    mayar juya_zuwa_json({"sako": "Hausa Flask CRUD backend yana aiki"})
 
 
 @injin.bude_hanya("/abubuwa", methods=["GET"])
@@ -43,10 +58,7 @@ aiki duk_abubuwa():
     sakamako = mai_aiki.karba_duka()
     hadi.rufe()
 
-    mayar juya_zuwa_json([
-        {"id": layi[0], "suna": layi[1]}
-        ga layi cikin sakamako
-    ])
+    mayar juya_zuwa_json([maida_abu(layi) ga layi cikin sakamako])
 
 
 @injin.bude_hanya("/abubuwa", methods=["POST"])
@@ -67,18 +79,61 @@ aiki kirkiri_abu():
     mayar juya_zuwa_json({"id": sabon_id, "suna": suna}), 201
 
 
+@injin.bude_hanya("/abubuwa/<int:abu_id>", methods=["GET"])
+aiki samu_abu(abu_id):
+    abu = nemo_abu_daga_db(abu_id)
+    idan ba abu:
+        mayar juya_zuwa_json({"kuskure": "Ba a sami abu ba"}), 404
+    mayar juya_zuwa_json(abu)
+
+
+@injin.bude_hanya("/abubuwa/<int:abu_id>", methods=["PUT"])
+aiki sabunta_abu(abu_id):
+    abu = nemo_abu_daga_db(abu_id)
+    idan ba abu:
+        mayar juya_zuwa_json({"kuskure": "Ba a sami abu ba"}), 404
+
+    bayanai = bukata.karanta_json() ko {}
+    suna = bayanai.samu("suna")
+    idan ba suna:
+        mayar juya_zuwa_json({"kuskure": "suna ya zama dole"}), 400
+
+    hadi = samun_hadi()
+    mai_aiki = hadi.samu_cursor()
+    mai_aiki.aiwatar("UPDATE abubuwa SET suna = ? WHERE id = ?", (suna, abu_id))
+    hadi.ajiye()
+    hadi.rufe()
+
+    mayar juya_zuwa_json({"id": abu_id, "suna": suna})
+
+
+@injin.bude_hanya("/abubuwa/<int:abu_id>", methods=["DELETE"])
+aiki goge_abu(abu_id):
+    abu = nemo_abu_daga_db(abu_id)
+    idan ba abu:
+        mayar juya_zuwa_json({"kuskure": "Ba a sami abu ba"}), 404
+
+    hadi = samun_hadi()
+    mai_aiki = hadi.samu_cursor()
+    mai_aiki.aiwatar("DELETE FROM abubuwa WHERE id = ?", (abu_id,))
+    hadi.ajiye()
+    hadi.rufe()
+
+    mayar juya_zuwa_json({"sako": "An goge abu", "abu": abu})
+
+
 idan __name__ == "__main__":
     injin.run(host="127.0.0.1", port=5000, debug=gaskiya)
 '''
 
-FASTAPI_APP = '''# Hausa FastAPI backend project
+FASTAPI_APP = '''# Hausa FastAPI backend CRUD project
 # Run: hausa run app.hausa
 
 daga fastapi shigo Saurin_API, Kuskuren_HTTP
 daga pydantic shigo Tushen_Model
 shigo Sabar_Uvicorn
 
-app = Saurin_API(title="Hausa FastAPI Backend")
+app = Saurin_API(title="Hausa FastAPI CRUD Backend")
 
 
 aji Abu(Tushen_Model):
@@ -88,9 +143,16 @@ aji Abu(Tushen_Model):
 abubuwa = []
 
 
+aiki nemo_abu(abu_id: lamba):
+    ga abu cikin abubuwa:
+        idan abu["id"] == abu_id:
+            mayar abu
+    mayar babu
+
+
 @app.samu("/")
 aiki gida():
-    mayar {"sako": "Hausa FastAPI backend yana aiki"}
+    mayar {"sako": "Hausa FastAPI CRUD backend yana aiki"}
 
 
 @app.samu("/abubuwa")
@@ -108,18 +170,37 @@ aiki kirkiri_abu(abu: Abu):
 
 @app.samu("/abubuwa/{abu_id}")
 aiki samu_abu(abu_id: lamba):
-    ga abu cikin abubuwa:
-        idan abu["id"] == abu_id:
-            mayar abu
+    abu = nemo_abu(abu_id)
+    idan ba abu:
+        tada Kuskuren_HTTP(status_code=404, detail="Ba a sami abu ba")
+    mayar abu
 
-    tada Kuskuren_HTTP(status_code=404, detail="Ba a sami abu ba")
+
+@app.saka("/abubuwa/{abu_id}")
+aiki sabunta_abu(abu_id: lamba, sabon_bayani: Abu):
+    abu = nemo_abu(abu_id)
+    idan ba abu:
+        tada Kuskuren_HTTP(status_code=404, detail="Ba a sami abu ba")
+
+    abu["suna"] = sabon_bayani.suna
+    mayar abu
+
+
+@app.goge_hanya("/abubuwa/{abu_id}")
+aiki goge_abu(abu_id: lamba):
+    abu = nemo_abu(abu_id)
+    idan ba abu:
+        tada Kuskuren_HTTP(status_code=404, detail="Ba a sami abu ba")
+
+    abubuwa.remove(abu)
+    mayar {"sako": "An goge abu", "abu": abu}
 
 
 idan __name__ == "__main__":
     Sabar_Uvicorn.gudanar(app, host="127.0.0.1", port=8000)
 '''
 
-SQLITE_APP = '''# Hausa SQLite database project
+SQLITE_APP = '''# Hausa SQLite database CRUD project
 # Run: hausa run app.hausa
 
 daga sqlite3 shigo bude_rufa
@@ -159,37 +240,74 @@ aiki duk_abubuwa():
     mayar sakamako
 
 
-idan __name__ == "__main__":
-    kirkiri_abu("Abu na farko")
-    kirkiri_abu("Abu na biyu")
+aiki samu_abu(abu_id):
+    hadi = samun_hadi()
+    mai_aiki = hadi.samu_cursor()
+    mai_aiki.aiwatar("SELECT id, suna FROM abubuwa WHERE id = ?", (abu_id,))
+    sakamako = mai_aiki.karba_guda()
+    hadi.rufe()
+    mayar sakamako
 
+
+aiki sabunta_abu(abu_id, suna):
+    hadi = samun_hadi()
+    mai_aiki = hadi.samu_cursor()
+    mai_aiki.aiwatar("UPDATE abubuwa SET suna = ? WHERE id = ?", (suna, abu_id))
+    hadi.ajiye()
+    layuka = mai_aiki.layuka
+    hadi.rufe()
+    mayar layuka
+
+
+aiki goge_abu(abu_id):
+    hadi = samun_hadi()
+    mai_aiki = hadi.samu_cursor()
+    mai_aiki.aiwatar("DELETE FROM abubuwa WHERE id = ?", (abu_id,))
+    hadi.ajiye()
+    layuka = mai_aiki.layuka
+    hadi.rufe()
+    mayar layuka
+
+
+idan __name__ == "__main__":
+    na_farko = kirkiri_abu("Abu na farko")
+    na_biyu = kirkiri_abu("Abu na biyu")
+
+    buga("Bayan kirkira:")
+    ga abu cikin duk_abubuwa():
+        buga(abu)
+
+    sabunta_abu(na_farko, "Abu na farko da aka sabunta")
+    goge_abu(na_biyu)
+
+    buga("Bayan sabuntawa da gogewa:")
     ga abu cikin duk_abubuwa():
         buga(abu)
 '''
 
 PROJECT_TEMPLATES = {
     ("backend", "flask"): {
-        "description": "Hausa Flask backend API project",
+        "description": "Hausa Flask CRUD backend API project",
         "files": {
             "app.hausa": FLASK_APP,
             "requirements.txt": "flask\n",
-            "README.md": "# Hausa Flask Backend\n\nRun:\n\n```bash\npip install -r requirements.txt\nhausa run app.hausa\n```\n",
+            "README.md": "# Hausa Flask CRUD Backend\n\nRun:\n\n```bash\npip install -r requirements.txt\nhausa run app.hausa\n```\n\nEndpoints:\n\n- GET /\n- GET /abubuwa\n- POST /abubuwa\n- GET /abubuwa/<id>\n- PUT /abubuwa/<id>\n- DELETE /abubuwa/<id>\n",
         },
     },
     ("backend", "fastapi"): {
-        "description": "Hausa FastAPI backend API project",
+        "description": "Hausa FastAPI CRUD backend API project",
         "files": {
             "app.hausa": FASTAPI_APP,
             "requirements.txt": "fastapi\nuvicorn\n",
-            "README.md": "# Hausa FastAPI Backend\n\nRun:\n\n```bash\npip install -r requirements.txt\nhausa run app.hausa\n```\n",
+            "README.md": "# Hausa FastAPI CRUD Backend\n\nRun:\n\n```bash\npip install -r requirements.txt\nhausa run app.hausa\n```\n\nOpen API docs:\n\n```text\nhttp://127.0.0.1:8000/docs\n```\n",
         },
     },
     ("database", "sqlite"): {
-        "description": "Hausa SQLite database project",
+        "description": "Hausa SQLite database CRUD project",
         "files": {
             "app.hausa": SQLITE_APP,
             "requirements.txt": "",
-            "README.md": "# Hausa SQLite Database App\n\nRun:\n\n```bash\nhausa run app.hausa\n```\n",
+            "README.md": "# Hausa SQLite Database CRUD App\n\nRun:\n\n```bash\nhausa run app.hausa\n```\n",
         },
     },
 }
