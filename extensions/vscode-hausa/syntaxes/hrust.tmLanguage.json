@@ -1,0 +1,20 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Hausa Rust",
+  "scopeName": "source.hrust",
+  "patterns": [
+    {
+      "name": "comment.line.double-slash.hrust",
+      "match": "//.*$"
+    },
+    {
+      "name": "string.quoted.double.hrust",
+      "begin": "\"",
+      "end": "\""
+    },
+    {
+      "name": "keyword.control.hrust",
+      "match": "\\b(aiki|bari|sauya|aji|idan|in_ba_haka_ba|dace|yayin|zagaye|ga|cikin|tsaya|wuce|mayar|jama'a|amfani|sashe|akwati|babba|kamar|tsari|lissafi|hali|aiwatar|nau'i|kai_tsaye|KAI_TSAYE|tabbatacce|tsayayye|nuni|motsa|hadari|inda|waje|sauye_sauye|babu_guda|jira|gaskiya|karya)\\b"
+    }
+  ]
+}

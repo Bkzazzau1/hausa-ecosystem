@@ -1,0 +1,35 @@
+# Shigo da rumbun gina sabar yanar gizo (Flask micro-framework backend core)
+daga flask shigo Injin_Yanar_Gizo, juya_zuwa_json
+
+
+# 1. Tayar da injin sabar yanar gizo
+injin = Injin_Yanar_Gizo(__name__)
+
+
+# 2. Samar da hanyar shiga ta asali (Base Home Route API)
+@injin.bude_hanya("/", methods=["GET"])
+aiki shafin_gida():
+    amsa = {
+        "tsarin_shiri": "Pera-X Backend API Suite",
+        "hali": "Injin Yana Raye!",
+        "sako": "Barka da zuwa babban tsarin sabar Hausa-Tech."
+    }
+    mayar juya_zuwa_json(amsa)
+
+
+# 3. Samar da hanyar binciko bayanai na kasuwa (Data Route API)
+@injin.bude_hanya("/kasuwa", methods=["GET"])
+aiki bayanan_kasuwa():
+    # Misalin data dake fitowa daga database dinka na SQLite ko MongoDB
+    kayan_shago = [
+        {"id": 1, "suna": "Shinkafa", "farashi": 45000},
+        {"id": 2, "suna": "Mai_Ja", "farashi": 12000},
+        {"id": 3, "suna": "Suga", "farashi": 8500}
+    ]
+    mayar juya_zuwa_json(kayan_shago)
+
+
+# 4. Gudanar da cikakken injin sabar a kwamfutarka
+idan __name__ == "__main__":
+    buga("Ana kunna Injin Sabar Yanar Gizo lafiyalan a hanyar http://127.0.0.1:5000 ...")
+    injin.run(host="127.0.0.1", port=5000, debug=karya)

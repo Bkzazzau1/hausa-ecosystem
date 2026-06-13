@@ -1,0 +1,9 @@
+// Gwajin yaren Hausa-Rust
+jama'a aiki main() {
+    bari sauya kudi = 1000;
+    kudi = kudi + 500;
+
+    idan gaskiya {
+        println!("Kudin dake asusunka shine: {}", kudi);
+    }
+}
