@@ -6,6 +6,7 @@ from core.database import load_dictionary_from_db
 from core.python_engine import english_to_hausa, hausa_to_english, run_hausa_code
 from core.rust_engine import english_to_hrust, hrust_to_english, run_rust_code
 from hausa_ecosystem import __version__
+from hausa_ecosystem.api_checker import run_api_tests
 from hausa_ecosystem.project_generators import create_project, is_project_generator_request
 
 STARTER_TEMPLATES = {
@@ -84,6 +85,9 @@ def main(argv=None):
 
     if args[0] == "new":
         return run_new_command(args[1:])
+
+    if args[0] == "test-api":
+        return run_api_tests(args[1:])
 
     if len(args) == 4 and args[2] == "-o" and args[0] in ("to-en", "to-ha"):
         return run_command(args[0], args[1], output_file=args[3])
@@ -259,6 +263,7 @@ def print_usage():
     print("  Sabon Flask API:     hausa new backend flask my_api")
     print("  Sabon FastAPI API:   hausa new backend fastapi my_api")
     print("  Sabon SQLite App:    hausa new database sqlite my_db_app")
+    print("  Gwada API:           hausa test-api flask BASE_URL")
     print("  Keywords Python:     hausa keywords python")
     print("  Keywords Rust:       hausa keywords rust")
     print("\nPYTHON:")
