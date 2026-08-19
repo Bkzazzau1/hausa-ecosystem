@@ -44,7 +44,7 @@ def deploy_extension():
 
         shutil.copytree(source_dir, target_dir)
         print("\n" + "=" * 60)
-        print("AN YI NASARA! AN GIRKA HAUSA VS CODE EXTENSION!")
+        print("AN YI NASARA! AN SAMAR DA HAUSA VS CODE EXTENSION!")
         print("Yadda zaka kunna shi:")
         print("  1. Rufe duka windows na VS Code da suke bude yanzu.")
         print("  2. Sake bude VS Code dinka.")

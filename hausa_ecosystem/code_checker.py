@@ -3,7 +3,7 @@ import subprocess
 import tempfile
 from pathlib import Path
 
-from core.python_engine import hausa_to_english
+from core.python_engine import TranslationError, hausa_to_english
 from core.rust_engine import hrust_to_english
 
 
@@ -32,7 +32,11 @@ def run_check_command(args):
 
 def check_hausa_python(source_path):
     source = source_path.read_text(encoding="utf-8")
-    translated = hausa_to_english(source)
+    try:
+        translated = hausa_to_english(source)
+    except TranslationError as error:
+        print(f"FAIL: Kuskuren fassara: {error}")
+        return 1
 
     try:
         compile(translated, str(source_path), "exec")

@@ -22,6 +22,15 @@
     ],
     "description": "Create a Hausa Python function"
   },
+  "Hausa Generator": {
+    "prefix": "bayar",
+    "body": [
+      "aiki ${1:samar_da_bayanai}():",
+      "    ga ${2:abu} cikin ${3:kewayo(10)}:",
+      "        bayar ${2:abu}"
+    ],
+    "description": "Create a Hausa Python generator using yield"
+  },
   "SQLite Starter": {
     "prefix": "sqlite",
     "body": [

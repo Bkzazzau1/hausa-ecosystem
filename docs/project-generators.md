@@ -75,3 +75,24 @@ duk_abubuwa
 sabunta_abu
 goge_abu
 ```
+# Project generators
+
+Generated projects are secure learning baselines, not complete production
+deployments. They use bounded dependency ranges, environment-based host/port and
+database settings, persistent SQLite data where applicable, disabled Flask debug
+mode, an `.env.example`, and a starter test.
+
+Create and prepare a project:
+
+```bash
+hausa new backend flask my_api
+cd my_api
+python -m venv .venv
+python -m pip install -r requirements.txt
+python -m pytest
+hausa run app.hausa --profile flask
+```
+
+Before internet-facing deployment, add authentication, authorization, HTTPS,
+secret management, database migrations, request limits, structured logging,
+backups, and a production process manager appropriate to the chosen framework.

@@ -10,11 +10,12 @@ PROJECT_GENERATOR_USAGE = (
 FLASK_APP = '''# Hausa Flask backend CRUD project
 # Run: hausa run app.hausa
 
+shigo os
 daga flask shigo Injin_Yanar_Gizo, juya_zuwa_json, bukata
 daga sqlite3 shigo bude_rufa
 
 injin = Injin_Yanar_Gizo(__name__)
-DATABASE = "app.db"
+DATABASE = os.getenv("HAUSA_DATABASE", "app.db")
 
 
 aiki samun_hadi():
@@ -123,15 +124,21 @@ aiki goge_abu(abu_id):
 
 
 idan __name__ == "__main__":
-    injin.run(host="127.0.0.1", port=5000, debug=gaskiya)
+    injin.run(
+        host=os.getenv("HAUSA_HOST", "127.0.0.1"),
+        port=lamba(os.getenv("HAUSA_PORT", "5000")),
+        debug=karya,
+    )
 '''
 
 FASTAPI_APP = '''# Hausa FastAPI backend CRUD project
 # Run: hausa run app.hausa
 
+shigo os
 daga fastapi shigo Saurin_API, Kuskuren_HTTP
 daga pydantic shigo Tushen_Model
 shigo Sabar_Uvicorn
+shigo sqlite3
 
 app = Saurin_API(title="Hausa FastAPI CRUD Backend")
 
@@ -140,14 +147,22 @@ aji Abu(Tushen_Model):
     suna: rubutu
 
 
-abubuwa = []
+DATABASE = os.getenv("HAUSA_DATABASE", "app.db")
+
+
+aiki samun_hadi():
+    hadi = sqlite3.bude_rufa(DATABASE)
+    hadi.row_factory = sqlite3.Row
+    hadi.aiwatar("CREATE TABLE IF NOT EXISTS abubuwa (id INTEGER PRIMARY KEY AUTOINCREMENT, suna TEXT NOT NULL)")
+    hadi.ajiye()
+    mayar hadi
 
 
 aiki nemo_abu(abu_id: lamba):
-    ga abu cikin abubuwa:
-        idan abu["id"] == abu_id:
-            mayar abu
-    mayar babu
+    hadi = samun_hadi()
+    layi = hadi.aiwatar("SELECT id, suna FROM abubuwa WHERE id = ?", (abu_id,)).karba_guda()
+    hadi.rufe()
+    mayar makullai(layi) idan layi in_ba_haka_ba babu
 
 
 @app.samu("/")
@@ -157,14 +172,19 @@ aiki gida():
 
 @app.samu("/abubuwa")
 aiki duk_abubuwa():
-    mayar abubuwa
+    hadi = samun_hadi()
+    layuka = hadi.aiwatar("SELECT id, suna FROM abubuwa ORDER BY id DESC").karba_duka()
+    hadi.rufe()
+    mayar [makullai(layi) ga layi cikin layuka]
 
 
 @app.aika("/abubuwa", status_code=201)
 aiki kirkiri_abu(abu: Abu):
-    sabon_abu = abu.model_dump()
-    sabon_abu["id"] = len(abubuwa) + 1
-    abubuwa.append(sabon_abu)
+    hadi = samun_hadi()
+    mai_aiki = hadi.aiwatar("INSERT INTO abubuwa (suna) VALUES (?)", (abu.suna,))
+    hadi.ajiye()
+    sabon_abu = {"id": mai_aiki.sabon_id, "suna": abu.suna}
+    hadi.rufe()
     mayar sabon_abu
 
 
@@ -182,8 +202,11 @@ aiki sabunta_abu(abu_id: lamba, sabon_bayani: Abu):
     idan ba abu:
         tada Kuskuren_HTTP(status_code=404, detail="Ba a sami abu ba")
 
-    abu["suna"] = sabon_bayani.suna
-    mayar abu
+    hadi = samun_hadi()
+    hadi.aiwatar("UPDATE abubuwa SET suna = ? WHERE id = ?", (sabon_bayani.suna, abu_id))
+    hadi.ajiye()
+    hadi.rufe()
+    mayar {"id": abu_id, "suna": sabon_bayani.suna}
 
 
 @app.goge_hanya("/abubuwa/{abu_id}")
@@ -192,12 +215,19 @@ aiki goge_abu(abu_id: lamba):
     idan ba abu:
         tada Kuskuren_HTTP(status_code=404, detail="Ba a sami abu ba")
 
-    abubuwa.remove(abu)
+    hadi = samun_hadi()
+    hadi.aiwatar("DELETE FROM abubuwa WHERE id = ?", (abu_id,))
+    hadi.ajiye()
+    hadi.rufe()
     mayar {"sako": "An goge abu", "abu": abu}
 
 
 idan __name__ == "__main__":
-    Sabar_Uvicorn.gudanar(app, host="127.0.0.1", port=8000)
+    Sabar_Uvicorn.gudanar(
+        app,
+        host=os.getenv("HAUSA_HOST", "127.0.0.1"),
+        port=lamba(os.getenv("HAUSA_PORT", "8000")),
+    )
 '''
 
 SQLITE_APP = '''# Hausa SQLite database CRUD project
@@ -290,7 +320,9 @@ PROJECT_TEMPLATES = {
         "description": "Hausa Flask CRUD backend API project",
         "files": {
             "app.hausa": FLASK_APP,
-            "requirements.txt": "flask\n",
+            "requirements.txt": "flask>=3.0,<4\npytest>=8,<9\n",
+            ".env.example": "HAUSA_HOST=127.0.0.1\nHAUSA_PORT=5000\nHAUSA_DATABASE=app.db\n",
+            "test_app.py": """from pathlib import Path\n\n\ndef test_generated_source_exists():\n    assert Path('app.hausa').read_text(encoding='utf-8')\n""",
             "README.md": "# Hausa Flask CRUD Backend\n\nRun:\n\n```bash\npip install -r requirements.txt\nhausa run app.hausa\n```\n\nEndpoints:\n\n- GET /\n- GET /abubuwa\n- POST /abubuwa\n- GET /abubuwa/<id>\n- PUT /abubuwa/<id>\n- DELETE /abubuwa/<id>\n",
         },
     },
@@ -298,7 +330,9 @@ PROJECT_TEMPLATES = {
         "description": "Hausa FastAPI CRUD backend API project",
         "files": {
             "app.hausa": FASTAPI_APP,
-            "requirements.txt": "fastapi\nuvicorn\n",
+            "requirements.txt": "fastapi>=0.115,<1\nuvicorn>=0.30,<1\npydantic>=2,<3\npytest>=8,<9\n",
+            ".env.example": "HAUSA_HOST=127.0.0.1\nHAUSA_PORT=8000\nHAUSA_DATABASE=app.db\n",
+            "test_app.py": """from pathlib import Path\n\n\ndef test_generated_source_exists():\n    assert Path('app.hausa').read_text(encoding='utf-8')\n""",
             "README.md": "# Hausa FastAPI CRUD Backend\n\nRun:\n\n```bash\npip install -r requirements.txt\nhausa run app.hausa\n```\n\nOpen API docs:\n\n```text\nhttp://127.0.0.1:8000/docs\n```\n",
         },
     },
@@ -306,7 +340,9 @@ PROJECT_TEMPLATES = {
         "description": "Hausa SQLite database CRUD project",
         "files": {
             "app.hausa": SQLITE_APP,
-            "requirements.txt": "",
+            "requirements.txt": "pytest>=8,<9\n",
+            ".env.example": "HAUSA_DATABASE=app.db\n",
+            "test_app.py": """from pathlib import Path\n\n\ndef test_generated_source_exists():\n    assert Path('app.hausa').read_text(encoding='utf-8')\n""",
             "README.md": "# Hausa SQLite Database CRUD App\n\nRun:\n\n```bash\nhausa run app.hausa\n```\n",
         },
     },

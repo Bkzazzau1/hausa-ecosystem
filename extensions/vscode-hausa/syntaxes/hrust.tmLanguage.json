@@ -4,17 +4,19 @@
   "scopeName": "source.hrust",
   "patterns": [
     {
-      "name": "comment.line.double-slash.hrust",
-      "match": "//.*$"
+      "name": "constant.language.hrust",
+      "match": "(?<![\\w'])(?:gaskiya|karya)(?![\\w'])"
     },
     {
-      "name": "string.quoted.double.hrust",
-      "begin": "\"",
-      "end": "\""
+      "name": "storage.modifier.hrust",
+      "match": "(?<![\\w'])(?:sauye_sauye|KAI_TSAYE|kai_tsaye|tsayayye|aiwatar|lissafi|akwati|amfani|hadari|jama'a|babba|nau'i|sashe|tsari|hali|nuni|waje)(?![\\w'])"
     },
     {
       "name": "keyword.control.hrust",
-      "match": "\\b(aiki|bari|sauya|aji|idan|in_ba_haka_ba|dace|yayin|zagaye|ga|cikin|tsaya|wuce|mayar|jama'a|amfani|sashe|akwati|babba|kamar|tsari|lissafi|hali|aiwatar|nau'i|kai_tsaye|KAI_TSAYE|tabbatacce|tsayayye|nuni|motsa|hadari|inda|waje|sauye_sauye|babu_guda|jira|gaskiya|karya)\\b"
+      "match": "(?<![\\w'])(?:in_ba_haka_ba|tabbatacce|babu_guda|zagaye|cikin|kamar|mayar|motsa|sauya|tsaya|yayin|aiki|bari|dace|idan|inda|jira|wuce|aji|ga)(?![\\w'])"
+    },
+    {
+      "include": "source.rust"
     }
   ]
 }

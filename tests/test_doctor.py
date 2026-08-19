@@ -47,10 +47,10 @@ def test_run_doctor_prints_summary(monkeypatch, capsys):
     assert "Sakamako: 1 passed, 1 warnings" in captured.out
 
 
-def test_check_working_directory_detects_missing_project_root(tmp_path, monkeypatch):
-    monkeypatch.chdir(tmp_path)
+def test_check_working_directory_checks_user_data_parent(tmp_path, monkeypatch):
+    monkeypatch.setenv("HAUSA_DATA_DIR", str(tmp_path / "hausa-data"))
 
     result = doctor.check_working_directory()
 
-    assert result["ok"] is False
-    assert "Missing" in result["message"]
+    assert result["ok"] is True
+    assert "hausa-data" in result["message"]

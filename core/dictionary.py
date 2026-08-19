@@ -134,7 +134,84 @@ PYTHON_KEYWORDS = {
     # Anonymous functions & place-holders
     "alamun_haske": "lambda",
     "wuce_kawai": "pass",
+
+    # Python 3.14 language additions completed for Version 1.
+    "bayar": "yield",
+    "nau_i": "type",
 }
+
+# Python 3.14 built-in functions. These live in their own profile because names
+# such as ``map`` and ``filter`` are ordinary identifiers, not reserved syntax.
+PYTHON_BUILTINS = {
+    "cikakkiyar_daraja": "abs",
+    "mai_maimaitawa_maras_jira": "aiter",
+    "na_gaba_maras_jira": "anext",
+    "duk_gaskiya": "all",
+    "wani_gaskiya": "any",
+    "askil": "ascii",
+    "tsarin_biyu": "bin",
+    "gaskiya_ko_karya": "bool",
+    "wurin_tsayawa": "breakpoint",
+    "jerin_baiti": "bytearray",
+    "baitoci": "bytes",
+    "mai_kira": "callable",
+    "harafi": "chr",
+    "aikin_aji": "classmethod",
+    "hada_shiri": "compile",
+    "lamba_hadaddiya": "complex",
+    "goge_sifa": "delattr",
+    "kundin_siffofi": "dir",
+    "rabo_da_saura": "divmod",
+    "kirga_jeri": "enumerate",
+    "kimanta": "eval",
+    "aiwatar_rubutu": "exec",
+    "tace": "filter",
+    "tsara": "format",
+    "saitin_daskare": "frozenset",
+    "samu_sifa": "getattr",
+    "sunayen_duniya": "globals",
+    "yana_da_sifa": "hasattr",
+    "tambarin_hash": "hash",
+    "taimako": "help",
+    "tsarin_goma_sha_shida": "hex",
+    "shaida": "id",
+    "nau_in_abu_ne": "isinstance",
+    "karamin_aji_ne": "issubclass",
+    "mai_maimaitawa": "iter",
+    "tsawo": "len",
+    "sunayen_ciki": "locals",
+    "taswira": "map",
+    "mafi_girma": "max",
+    "kallon_ma_ajiya": "memoryview",
+    "mafi_karami": "min",
+    "na_gaba": "next",
+    "abu": "object",
+    "tsarin_takwas": "oct",
+    "bude_fayil": "open",
+    "lambar_harafi": "ord",
+    "daukaka": "pow",
+    "sifa": "property",
+    "kewayo": "range",
+    "wakilci": "repr",
+    "juya_baya": "reversed",
+    "zagaye_lamba": "round",
+    "saita_sifa": "setattr",
+    "yanki": "slice",
+    "jera": "sorted",
+    "aikin_tsaye": "staticmethod",
+    "jimla": "sum",
+    "uwar_aji": "super",
+    "sauye_sauye": "vars",
+    "hada_jeri": "zip",
+    "shigo_na_ciki": "__import__",
+}
+
+# These common types/functions already have stable names in PYTHON_KEYWORDS.
+PYTHON_BUILTIN_WORDS = set(PYTHON_BUILTINS) | {
+    "buga", "shigar", "lamba", "lamba_dige", "rubutu", "jeri", "makullai",
+    "saiti", "biyu_biyu", "nau_i",
+}
+PYTHON_KEYWORDS.update(PYTHON_BUILTINS)
 
 RUST_KEYWORDS = {
     # Functional Declarations & Variables
@@ -231,3 +308,62 @@ RUST_ERRORS = {
     "expected semicolon": "An manta sanya alamar datsa ';' a karshen wannan layin",
     "borrow of moved value": "Kuskuren Mallakar Bayani! An riga an motsa wannan bayanin zuwa wani wurin daban (Borrow of Moved Value)",
 }
+
+# Vocabulary is deliberately split into profiles.  ``all`` remains the default
+# for backward compatibility, while applications can select smaller profiles to
+# avoid translating framework method names that happen to match user names.
+PYTHON_CORE_WORDS = {
+    "buga", "shigar", "idan", "sauran_idan", "in_ba_haka_ba", "lamba",
+    "lamba_dige", "rubutu", "jeri", "makullai", "saiti", "biyu_biyu",
+    "ga", "cikin", "yayin", "tsaya", "wuce", "aiki", "mayar", "aji",
+    "kamar", "babban_gari", "ba_na_ciki", "goge", "dace", "hali", "gwada",
+    "kama", "karshe", "tada", "tabbatar", "tare_da", "daga", "shigo",
+    "karya", "gaskiya", "babu", "kuma", "ko", "ba", "shi_ne", "babu_guda",
+    "jira", "alamun_haske", "wuce_kawai", "bayar", "nau_i",
+}
+PYTHON_DATABASE_WORDS = {
+    "bude_rufa", "binciko", "saka_cikin", "sabunta", "goge_daga", "tebur",
+    "Abokin_Hadin_Mongo", "kunshe_bayanai", "takarda", "nemo_guda", "saka_guda",
+    "samu_cursor", "aiwatar", "aiwatar_da_yawa", "karba_guda", "karba_duka",
+    "ajiye", "janye", "rufe", "layuka", "sabon_id", "tace", "tace_da",
+    "farko", "duka", "kirkiro", "adana", "nemo", "nemo_ko_404", "shafi",
+    "oda_da", "hawa", "sauka",
+}
+PYTHON_FLASK_WORDS = {
+    "Injin_Yanar_Gizo", "bude_hanya", "bukata", "buƙata", "amsa",
+    "tsarin_bayanai", "juya_zuwa_json", "rufe_sirri", "karanta_json",
+    "samu", "aika", "saka", "gyara_sashe", "goge_hanya",
+}
+PYTHON_FASTAPI_WORDS = {
+    "Saurin_API", "Mai_Hanya", "Kuskuren_HTTP", "Dogaro", "Matsayi",
+    "Tushen_Model", "Filin", "Sabar_Uvicorn", "gudanar", "samu", "aika",
+    "saka", "gyara_sashe", "goge_hanya",
+}
+PYTHON_WEB_WORDS = PYTHON_FLASK_WORDS | PYTHON_FASTAPI_WORDS
+
+PYTHON_VOCABULARY_PROFILES = {
+    "core": {key: PYTHON_KEYWORDS[key] for key in PYTHON_CORE_WORDS},
+    "database": {key: PYTHON_KEYWORDS[key] for key in PYTHON_CORE_WORDS | PYTHON_DATABASE_WORDS},
+    "web": {key: PYTHON_KEYWORDS[key] for key in PYTHON_CORE_WORDS | PYTHON_WEB_WORDS},
+    "flask": {key: PYTHON_KEYWORDS[key] for key in PYTHON_CORE_WORDS | PYTHON_DATABASE_WORDS | PYTHON_FLASK_WORDS},
+    "fastapi": {key: PYTHON_KEYWORDS[key] for key in PYTHON_CORE_WORDS | PYTHON_DATABASE_WORDS | PYTHON_FASTAPI_WORDS},
+    "builtins": {key: PYTHON_KEYWORDS[key] for key in PYTHON_CORE_WORDS | PYTHON_BUILTIN_WORDS},
+    "all": dict(PYTHON_KEYWORDS),
+}
+RUST_VOCABULARY_PROFILES = {"core": dict(RUST_KEYWORDS), "all": dict(RUST_KEYWORDS)}
+
+
+def get_python_vocabulary(profile="all"):
+    """Return a copy of a named Hausa Python vocabulary profile."""
+    try:
+        return dict(PYTHON_VOCABULARY_PROFILES[profile])
+    except KeyError as error:
+        raise ValueError(f"Unknown Python vocabulary profile: {profile}") from error
+
+
+def get_rust_vocabulary(profile="all"):
+    """Return a copy of a named Hausa Rust vocabulary profile."""
+    try:
+        return dict(RUST_VOCABULARY_PROFILES[profile])
+    except KeyError as error:
+        raise ValueError(f"Unknown Rust vocabulary profile: {profile}") from error

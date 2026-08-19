@@ -35,7 +35,9 @@ def test_generate_flask_backend_project(tmp_path):
 
     assert result.returncode == 0
     assert (project_dir / "app.hausa").exists()
-    assert (project_dir / "requirements.txt").read_text(encoding="utf-8") == "flask\n"
+    assert "flask>=3.0,<4" in (project_dir / "requirements.txt").read_text(encoding="utf-8")
+    assert (project_dir / ".env.example").exists()
+    assert (project_dir / "test_app.py").exists()
     assert "Injin_Yanar_Gizo" in app_content
     assert "bude_rufa" in app_content
     assert "methods=[\"POST\"]" in app_content
@@ -43,6 +45,7 @@ def test_generate_flask_backend_project(tmp_path):
     assert "methods=[\"DELETE\"]" in app_content
     assert "sabunta_abu" in app_content
     assert "goge_abu" in app_content
+    assert "debug=karya" in app_content
 
 
 def test_generate_fastapi_backend_project(tmp_path):
@@ -63,6 +66,8 @@ def test_generate_fastapi_backend_project(tmp_path):
     assert "@app.goge_hanya" in app_content
     assert "sabunta_abu" in app_content
     assert "goge_abu" in app_content
+    assert "sqlite3" in app_content
+    assert (project_dir / ".env.example").exists()
 
 
 def test_generate_sqlite_database_project_and_run_it(tmp_path):

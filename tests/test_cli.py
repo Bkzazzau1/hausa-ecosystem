@@ -100,3 +100,15 @@ if True:
     translated = output_file.read_text(encoding="utf-8")
     assert 'buga("Hello", name)' in translated
     assert "idan gaskiya:" in translated
+
+
+def test_cli_rejects_extra_arguments():
+    result = run_cli("run", "templates/gwaji.hausa", "unexpected")
+    assert result.returncode == 2
+
+
+def test_cli_exposes_core_vocabulary_profile():
+    result = run_cli("keywords", "python", "--profile", "core")
+    assert result.returncode == 0
+    assert "buga -> print" in result.stdout
+    assert "bude_rufa -> connect" not in result.stdout

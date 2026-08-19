@@ -1,4 +1,11 @@
+from core.database import load_dictionary_from_db
 from core.python_engine import english_to_hausa, hausa_to_english, run_hausa_code
+
+
+def test_loaded_vocabulary_contains_no_mojibake():
+    python_keywords, _, _ = load_dictionary_from_db()
+    assert "buƙata" in python_keywords
+    assert "buÆ™ata" not in python_keywords
 
 
 def test_database_keywords_translate_to_sqlite_python():

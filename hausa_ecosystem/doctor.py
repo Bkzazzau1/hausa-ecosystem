@@ -84,12 +84,14 @@ def check_vscode_extension():
 
 
 def check_working_directory():
-    expected_files = ["h-run.py", "pyproject.toml", "core", "hausa_ecosystem"]
-    missing = [item for item in expected_files if not Path(item).exists()]
+    from core.database import user_data_directory
+
+    data_dir = user_data_directory()
+    parent = data_dir.parent
     return {
-        "name": "Project root",
-        "ok": not missing,
-        "message": "Looks like Hausa Ecosystem project root" if not missing else f"Missing: {', '.join(missing)}",
+        "name": "User data directory",
+        "ok": parent.exists() and os.access(parent, os.W_OK),
+        "message": f"Optional vocabulary data: {data_dir}",
     }
 
 

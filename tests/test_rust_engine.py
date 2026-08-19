@@ -87,6 +87,19 @@ pub fn main() {
     assert "idan gaskiya" in translated
 
 
+def test_rust_translation_preserves_raw_strings_lifetimes_and_nested_comments():
+    source = """pub fn show<'static>(value: &'static str) {
+    let text = r#\"if true\"#;
+    /* outer /* if true */ let */
+}
+"""
+    translated = english_to_hrust(source)
+    assert "<'static>" in translated
+    assert "&'static str" in translated
+    assert 'r#"if true"#' in translated
+    assert "/* outer /* if true */ let */" in translated
+
+
 @pytest.mark.skipif(shutil.which("rustc") is None, reason="rustc is not installed")
 def test_hausa_rust_runner_executes_file(tmp_path, capsys):
     test_file = tmp_path / "gwaji.hrust"
