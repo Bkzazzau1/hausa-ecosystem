@@ -1,6 +1,7 @@
 const vscode = require("vscode");
 const path = require("path");
 const fs = require("fs");
+const os = require("os");
 const { execFile } = require("child_process");
 
 const SUPPORTED_HAUSA_SUFFIXES = new Set([".hausa", ".hrust"]);
@@ -10,6 +11,7 @@ function activate(context) {
   const output = vscode.window.createOutputChannel("Hausa Ecosystem");
   const diagnostics = vscode.languages.createDiagnosticCollection("hausa");
   const vocabulary = loadVocabulary(context.extensionPath, output);
+  const pendingChecks = new Map();
 
   context.subscriptions.push(output, diagnostics);
   context.subscriptions.push(
@@ -36,7 +38,28 @@ function activate(context) {
         checkDocument(document, output, diagnostics, false);
       }
     }),
-    vscode.workspace.onDidCloseTextDocument((document) => diagnostics.delete(document.uri))
+    vscode.workspace.onDidChangeTextDocument((event) => {
+      const document = event.document;
+      if (!isHausaDocument(document) || !configuration().get("diagnosticsOnType", false)) return;
+      const key = document.uri.toString();
+      clearTimeout(pendingChecks.get(key));
+      const configuredDelay = configuration().get("diagnosticsDelayMs", 750);
+      const delay = Math.min(5000, Math.max(250, Number(configuredDelay) || 750));
+      pendingChecks.set(key, setTimeout(async () => {
+        pendingChecks.delete(key);
+        await checkDocument(document, output, diagnostics, false, true);
+      }, delay));
+    }),
+    vscode.workspace.onDidCloseTextDocument((document) => {
+      const key = document.uri.toString();
+      clearTimeout(pendingChecks.get(key));
+      pendingChecks.delete(key);
+      diagnostics.delete(document.uri);
+    }),
+    { dispose: () => {
+      for (const timer of pendingChecks.values()) clearTimeout(timer);
+      pendingChecks.clear();
+    } }
   );
 
   if (vscode.window.activeTextEditor && isHausaDocument(vscode.window.activeTextEditor.document)) {
@@ -120,9 +143,16 @@ async function checkCurrentFile(output, diagnostics, reveal) {
   await checkDocument(document, output, diagnostics, reveal);
 }
 
-async function checkDocument(document, output, diagnostics, reveal) {
+async function checkDocument(document, output, diagnostics, reveal, useUnsavedText = false) {
+  let temporaryDirectory;
+  let checkedFile = document.fileName;
   try {
-    const result = await executeCli(["check", document.fileName], path.dirname(document.fileName));
+    if (useUnsavedText && document.isDirty) {
+      temporaryDirectory = await fs.promises.mkdtemp(path.join(os.tmpdir(), "hausa-check-"));
+      checkedFile = path.join(temporaryDirectory, `document${path.extname(document.fileName)}`);
+      await fs.promises.writeFile(checkedFile, document.getText(), "utf8");
+    }
+    const result = await executeCli(["check", checkedFile], path.dirname(document.fileName));
     diagnostics.delete(document.uri);
     writeOutput(output, result.stdout || `PASS: ${document.fileName}`, reveal);
   } catch (error) {
@@ -147,6 +177,10 @@ async function checkDocument(document, output, diagnostics, reveal) {
     diagnostics.set(document.uri, [diagnostic]);
     writeOutput(output, message, reveal);
     if (reveal) vscode.window.showErrorMessage("Hausa check failed. See Problems and Hausa Ecosystem output.");
+  } finally {
+    if (temporaryDirectory) {
+      await fs.promises.rm(temporaryDirectory, { recursive: true, force: true }).catch(() => undefined);
+    }
   }
 }
 
@@ -177,6 +211,9 @@ async function translateCurrentFile(direction, output) {
   if (suffix === ".hausa" || suffix === ".py") args.push("--profile", vocabularyProfile());
   try {
     const result = await executeCli(args, path.dirname(document.fileName));
+    if (!fs.existsSync(outputUri.fsPath)) {
+      throw new Error(`The translator did not create ${outputUri.fsPath}.`);
+    }
     writeOutput(output, result.stdout, false);
     const translated = await vscode.workspace.openTextDocument(outputUri);
     await vscode.window.showTextDocument(translated);
@@ -202,7 +239,10 @@ class HausaCompletionProvider {
 
   provideCompletionItems(document) {
     const entries = document.languageId === "hrust" ? this.vocabulary.rust : this.vocabulary.python;
-    return Object.entries(entries).map(([word, details]) => {
+    const profile = document.languageId === "hausa" ? vocabularyProfile() : "all";
+    return Object.entries(entries).filter(([, details]) => {
+      return profile === "all" || !details.profiles || details.profiles.includes(profile);
+    }).map(([word, details]) => {
       const item = new vscode.CompletionItem(word, completionKind(details.category));
       item.detail = `${word} → ${details.english}`;
       item.documentation = new vscode.MarkdownString(`**${details.category}**\n\nTranslates to \`${details.english}\`.`);

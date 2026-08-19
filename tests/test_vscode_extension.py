@@ -24,7 +24,7 @@ def test_vscode_extension_registers_snippets():
 def test_vscode_extension_marketplace_metadata_and_docs_exist():
     package_json = json.loads((EXTENSION_DIR / "package.json").read_text(encoding="utf-8"))
     assert package_json["publisher"] == "hausaecosystem"
-    assert package_json["version"] == "1.1.0"
+    assert package_json["version"] == "1.2.0"
     assert package_json["icon"] == "images/icon.png"
     assert package_json["license"] == "SEE LICENSE IN LICENSE"
     assert package_json["repository"]["url"].startswith("https://github.com/")
@@ -99,6 +99,20 @@ def test_vscode_110_commands_settings_and_runtime_are_registered():
     assert properties["hausa.vocabularyProfile"]["default"] == "all"
     assert properties["hausa.diagnosticsOnSave"]["default"] is True
     assert (EXTENSION_DIR / "extension.js").is_file()
+
+
+def test_vscode_120_live_diagnostics_and_profile_completions_are_registered():
+    package_json = json.loads((EXTENSION_DIR / "package.json").read_text(encoding="utf-8"))
+    properties = package_json["contributes"]["configuration"]["properties"]
+    assert properties["hausa.diagnosticsOnType"]["default"] is False
+    assert properties["hausa.diagnosticsDelayMs"]["default"] == 750
+    assert properties["hausa.diagnosticsDelayMs"]["minimum"] >= 250
+
+    runtime = (EXTENSION_DIR / "extension.js").read_text(encoding="utf-8")
+    assert "onDidChangeTextDocument" in runtime
+    assert "mkdtemp" in runtime
+    assert "details.profiles.includes(profile)" in runtime
+    assert "translator did not create" in runtime
 
 
 def test_generated_completion_vocabulary_matches_runtime_dictionary():

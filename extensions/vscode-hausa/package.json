@@ -3,7 +3,7 @@
   "publisher": "hausaecosystem",
   "displayName": "Hausa Programming Language Support",
   "description": "Syntax highlighting, snippets and language support for Hausa-Python and Hausa-Rust.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "icon": "images/icon.png",
   "license": "SEE LICENSE IN LICENSE",
   "homepage": "https://github.com/Bkzazzau1/hausa-ecosystem#readme",
@@ -74,6 +74,18 @@
           "type": "boolean",
           "default": true,
           "description": "Check Hausa files and update the Problems panel whenever they are saved."
+        },
+        "hausa.diagnosticsOnType": {
+          "type": "boolean",
+          "default": false,
+          "description": "Check unsaved Hausa source after typing pauses. Disabled by default to avoid extra CLI processes."
+        },
+        "hausa.diagnosticsDelayMs": {
+          "type": "number",
+          "default": 750,
+          "minimum": 250,
+          "maximum": 5000,
+          "description": "Delay in milliseconds before checking unsaved Hausa source while typing."
         }
       }
     },

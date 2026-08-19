@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.2.0
+
+- Added optional, debounced diagnostics for unsaved Hausa source while typing.
+- Made Hausa-Python completions respect the selected vocabulary profile.
+- Added verification that translation commands created their requested output.
+- Kept temporary diagnostic files outside the project and removed them after every check.
+
 ## 1.1.0
 
 - Added Run, Check, Translate to English, Translate to Hausa, and Select

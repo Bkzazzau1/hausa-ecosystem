@@ -97,6 +97,8 @@ Press `Ctrl+Space` for keyword completion.
 | `hausa.executablePath` | `hausa` | CLI command or absolute executable path |
 | `hausa.vocabularyProfile` | `all` | Profile used for Python run/translation commands |
 | `hausa.diagnosticsOnSave` | `true` | Check saved Hausa files in the Problems panel |
+| `hausa.diagnosticsOnType` | `false` | Check unsaved Hausa source after typing pauses |
+| `hausa.diagnosticsDelayMs` | `750` | Typing pause before an unsaved-source check (250–5000 ms) |
 
 The extension itself does not execute code and does not run background
 processes. See the [project repository](https://github.com/Bkzazzau1/hausa-ecosystem)
@@ -104,5 +106,5 @@ for documentation, examples, and issue reporting.
 
 ## Release scope
 
-Version 1.1 provides highlighting, snippets, commands, diagnostics, completion,
+Version 1.2 provides highlighting, snippets, commands, live diagnostics, profile-aware completion,
 and hover help. Java and C++ remain future work.
