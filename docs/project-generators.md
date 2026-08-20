@@ -66,6 +66,21 @@ hausa run app.hausa
 
 The SQLite generator creates `app.db` when the app runs. Database files are ignored by Git.
 
+## Django starter
+
+```bash
+hausa new backend django my_site
+cd my_site
+pip install -r requirements.txt
+hausa to-en main/views.hausa -o main/views.py --profile django
+python manage.py check
+python manage.py runserver
+```
+
+The generated project keeps Django's normal `manage.py`, settings, and URL
+layout. Edit `main/views.hausa`, translate it to `main/views.py`, and then run
+Django. Replace the example secret and configure allowed hosts before production.
+
 The generated SQLite app includes functions for:
 
 ```text

@@ -17,7 +17,7 @@
     },
     {
       "name": "support.function.framework.hausa",
-      "match": "(?<![\\w'])(?:Abokin_Hadin_Mongo|Injin_Yanar_Gizo|aiwatar_da_yawa|juya_zuwa_json|kunshe_bayanai|Kuskuren_HTTP|Sabar_Uvicorn|Tushen_Model|karanta_json|gyara_sashe|nemo_ko_404|samu_cursor|Saurin_API|bude_hanya|goge_hanya|karba_duka|karba_guda|rufe_sirri|saka_cikin|Mai_Hanya|bude_rufa|goge_daga|nemo_guda|saka_guda|sabon_id|Matsayi|aiwatar|binciko|gudanar|kirkiro|sabunta|tace_da|takarda|Dogaro|bukata|buƙata|layuka|oda_da|Filin|adana|ajiye|farko|janye|sauka|shafi|tebur|aika|amsa|duka|hawa|nemo|rufe|saka|samu)(?![\\w'])"
+      "match": "(?<![\\w'])(?:Abokin_Hadin_Mongo|Filin_Dogon_Rubutu|Injin_Yanar_Gizo|Samfurin_Bayanai|aiwatar_da_yawa|tura_sabon_wuri|juya_zuwa_json|kunshe_bayanai|Kuskuren_HTTP|Sabar_Uvicorn|Filin_Lokaci|Filin_Rubutu|Tushen_Model|karanta_json|Filin_Lamba|gyara_sashe|nemo_ko_404|samo_ko_404|samu_cursor|Amsar_HTTP|Amsar_JSON|Saurin_API|bude_hanya|goge_hanya|hanyar_url|karba_duka|karba_guda|nuna_shafi|rufe_sirri|saka_cikin|Mai_Hanya|bude_rufa|goge_daga|hada_urls|nemo_guda|saka_guda|sabon_id|Matsayi|aiwatar|binciko|gudanar|kirkiro|sabunta|tace_da|takarda|Dogaro|bukata|buƙata|layuka|oda_da|Filin|adana|ajiye|farko|janye|sauka|shafi|tebur|aika|amsa|duka|hawa|nemo|rufe|saka|samu)(?![\\w'])"
     },
     {
       "name": "keyword.control.hausa",

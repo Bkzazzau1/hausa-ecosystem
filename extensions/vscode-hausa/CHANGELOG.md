@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3.0
+
+- Added a Django vocabulary profile with common view, response, URL, shortcut, and model terms.
+- Added Django-aware highlighting, completion, and hover metadata.
+- Added a Hausa Django JSON-view snippet.
+- Added a Django starter-project generator and documented its translate-then-run workflow.
+
 ## 1.2.0
 
 - Added optional, debounced diagnostics for unsaved Hausa source while typing.

@@ -66,5 +66,15 @@
       "    mayar {\"sako\": \"${3:Yana aiki}\"}"
     ],
     "description": "Create a FastAPI route"
+  },
+  "Django JSON View": {
+    "prefix": "django-view",
+    "body": [
+      "daga django.http shigo Amsar_JSON",
+      "",
+      "aiki ${1:suna_duba}(bukata):",
+      "    mayar Amsar_JSON({\"sako\": \"${2:Yana aiki}\"})"
+    ],
+    "description": "Create a Hausa Django JSON view"
   }
 }

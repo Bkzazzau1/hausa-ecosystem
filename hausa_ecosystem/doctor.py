@@ -10,6 +10,7 @@ from pathlib import Path
 OPTIONAL_MODULES = {
     "flask": "Flask backend generator",
     "fastapi": "FastAPI backend generator",
+    "django": "Django backend generator",
     "uvicorn": "FastAPI server runner",
 }
 

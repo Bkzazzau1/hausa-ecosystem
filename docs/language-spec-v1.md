@@ -42,6 +42,7 @@ source.
 - `web`: core plus Flask, FastAPI, routing, and HTTP vocabulary.
 - `flask`: core and database vocabulary plus Flask-specific names.
 - `fastapi`: core and database vocabulary plus FastAPI-specific names.
+- `django`: core and database vocabulary plus Django-specific names.
 - `all`: every built-in Version 1 word; this is the compatibility default.
 
 Profiles limit accidental translation of application identifiers. Projects

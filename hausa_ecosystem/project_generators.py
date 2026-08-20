@@ -4,6 +4,7 @@ PROJECT_GENERATOR_USAGE = (
     "Kuskure: Yi amfani da:\n"
     "  hausa new backend flask my_api\n"
     "  hausa new backend fastapi my_api\n"
+    "  hausa new backend django my_site\n"
     "  hausa new database sqlite my_db_app"
 )
 
@@ -315,6 +316,54 @@ idan __name__ == "__main__":
         buga(abu)
 '''
 
+DJANGO_VIEWS = '''# Hausa Django view
+# Translate before starting Django:
+# hausa to-en main/views.hausa -o main/views.py --profile django
+
+daga django.http shigo Amsar_JSON
+
+
+aiki shafi_na_farko(bukata):
+    mayar Amsar_JSON({"sako": "Sannu daga Hausa Django!"})
+'''
+
+DJANGO_MANAGE = '''#!/usr/bin/env python
+import os
+import sys
+
+
+if __name__ == "__main__":
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings")
+    from django.core.management import execute_from_command_line
+    execute_from_command_line(sys.argv)
+'''
+
+DJANGO_SETTINGS = '''import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "development-only-change-me")
+DEBUG = os.environ.get("DJANGO_DEBUG", "false").lower() == "true"
+ALLOWED_HOSTS = [host for host in os.environ.get("DJANGO_ALLOWED_HOSTS", "127.0.0.1,localhost").split(",") if host]
+ROOT_URLCONF = "config.urls"
+MIDDLEWARE = []
+INSTALLED_APPS = []
+TEMPLATES = []
+DATABASES = {"default": {"ENGINE": "django.db.backends.sqlite3", "NAME": BASE_DIR / "db.sqlite3"}}
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+'''
+
+DJANGO_URLS = '''from django.urls import include, path
+
+urlpatterns = [path("", include("main.urls"))]
+'''
+
+DJANGO_APP_URLS = '''from django.urls import path
+from .views import shafi_na_farko
+
+urlpatterns = [path("", shafi_na_farko, name="home")]
+'''
+
 PROJECT_TEMPLATES = {
     ("backend", "flask"): {
         "description": "Hausa Flask CRUD backend API project",
@@ -334,6 +383,28 @@ PROJECT_TEMPLATES = {
             ".env.example": "HAUSA_HOST=127.0.0.1\nHAUSA_PORT=8000\nHAUSA_DATABASE=app.db\n",
             "test_app.py": """from pathlib import Path\n\n\ndef test_generated_source_exists():\n    assert Path('app.hausa').read_text(encoding='utf-8')\n""",
             "README.md": "# Hausa FastAPI CRUD Backend\n\nRun:\n\n```bash\npip install -r requirements.txt\nhausa run app.hausa\n```\n\nOpen API docs:\n\n```text\nhttp://127.0.0.1:8000/docs\n```\n",
+        },
+    },
+    ("backend", "django"): {
+        "description": "Hausa Django starter web project",
+        "next_steps": (
+            "  pip install -r requirements.txt\n"
+            "  hausa to-en main/views.hausa -o main/views.py --profile django\n"
+            "  python manage.py runserver"
+        ),
+        "files": {
+            "manage.py": DJANGO_MANAGE,
+            "config/__init__.py": "",
+            "config/settings.py": DJANGO_SETTINGS,
+            "config/urls.py": DJANGO_URLS,
+            "config/wsgi.py": "import os\nfrom django.core.wsgi import get_wsgi_application\nos.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')\napplication = get_wsgi_application()\n",
+            "main/__init__.py": "",
+            "main/urls.py": DJANGO_APP_URLS,
+            "main/views.hausa": DJANGO_VIEWS,
+            "requirements.txt": "django>=5.2,<7\npytest>=8,<9\n",
+            ".env.example": "DJANGO_SECRET_KEY=replace-with-a-long-random-secret\nDJANGO_DEBUG=false\nDJANGO_ALLOWED_HOSTS=127.0.0.1,localhost\n",
+            "test_project.py": """from pathlib import Path\n\n\ndef test_hausa_view_exists():\n    assert Path('main/views.hausa').read_text(encoding='utf-8')\n""",
+            "README.md": "# Hausa Django Starter\n\n```bash\npip install -r requirements.txt\nhausa to-en main/views.hausa -o main/views.py --profile django\npython manage.py check\npython manage.py runserver\n```\n\nOpen http://127.0.0.1:8000/. Never use the example secret in production.\n",
         },
     },
     ("database", "sqlite"): {
@@ -380,5 +451,5 @@ def create_project(args):
     print(template["description"])
     print("Mataki na gaba:")
     print(f"  cd {target_dir}")
-    print("  hausa run app.hausa")
+    print(template.get("next_steps", "  hausa run app.hausa"))
     return 0

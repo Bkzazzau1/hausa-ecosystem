@@ -224,7 +224,7 @@ async function translateCurrentFile(direction, output) {
 }
 
 async function selectVocabularyProfile() {
-  const profiles = ["core", "builtins", "database", "flask", "fastapi", "web", "all"];
+  const profiles = ["core", "builtins", "database", "flask", "fastapi", "django", "web", "all"];
   const selected = await vscode.window.showQuickPick(profiles, {
     placeHolder: `Current profile: ${vocabularyProfile()}`,
     title: "Select Hausa Python vocabulary profile",

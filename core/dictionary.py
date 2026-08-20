@@ -84,6 +84,20 @@ PYTHON_KEYWORDS = {
     "Sabar_Uvicorn": "uvicorn",
     "gudanar": "run",
 
+    # Django web framework vocabulary
+    "Amsar_HTTP": "HttpResponse",
+    "Amsar_JSON": "JsonResponse",
+    "hanyar_url": "path",
+    "hada_urls": "include",
+    "nuna_shafi": "render",
+    "tura_sabon_wuri": "redirect",
+    "samo_ko_404": "get_object_or_404",
+    "Samfurin_Bayanai": "Model",
+    "Filin_Rubutu": "CharField",
+    "Filin_Dogon_Rubutu": "TextField",
+    "Filin_Lamba": "IntegerField",
+    "Filin_Lokaci": "DateTimeField",
+
     # Loops & Controls
     "ga": "for",
     "cikin": "in",
@@ -339,7 +353,12 @@ PYTHON_FASTAPI_WORDS = {
     "Tushen_Model", "Filin", "Sabar_Uvicorn", "gudanar", "samu", "aika",
     "saka", "gyara_sashe", "goge_hanya",
 }
-PYTHON_WEB_WORDS = PYTHON_FLASK_WORDS | PYTHON_FASTAPI_WORDS
+PYTHON_DJANGO_WORDS = {
+    "Amsar_HTTP", "Amsar_JSON", "hanyar_url", "hada_urls", "nuna_shafi",
+    "tura_sabon_wuri", "samo_ko_404", "Samfurin_Bayanai", "Filin_Rubutu",
+    "Filin_Dogon_Rubutu", "Filin_Lamba", "Filin_Lokaci", "bukata", "buƙata",
+}
+PYTHON_WEB_WORDS = PYTHON_FLASK_WORDS | PYTHON_FASTAPI_WORDS | PYTHON_DJANGO_WORDS
 
 PYTHON_VOCABULARY_PROFILES = {
     "core": {key: PYTHON_KEYWORDS[key] for key in PYTHON_CORE_WORDS},
@@ -347,6 +366,7 @@ PYTHON_VOCABULARY_PROFILES = {
     "web": {key: PYTHON_KEYWORDS[key] for key in PYTHON_CORE_WORDS | PYTHON_WEB_WORDS},
     "flask": {key: PYTHON_KEYWORDS[key] for key in PYTHON_CORE_WORDS | PYTHON_DATABASE_WORDS | PYTHON_FLASK_WORDS},
     "fastapi": {key: PYTHON_KEYWORDS[key] for key in PYTHON_CORE_WORDS | PYTHON_DATABASE_WORDS | PYTHON_FASTAPI_WORDS},
+    "django": {key: PYTHON_KEYWORDS[key] for key in PYTHON_CORE_WORDS | PYTHON_DATABASE_WORDS | PYTHON_DJANGO_WORDS},
     "builtins": {key: PYTHON_KEYWORDS[key] for key in PYTHON_CORE_WORDS | PYTHON_BUILTIN_WORDS},
     "all": dict(PYTHON_KEYWORDS),
 }

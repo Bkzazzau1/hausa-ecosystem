@@ -61,6 +61,7 @@ Type a prefix and press `Ctrl+Space`:
 | `sqlite` | SQLite starter |
 | `flask-route` | Flask route |
 | `fastapi-route` | FastAPI route |
+| `django-view` | Django JSON view |
 | `main` | Hausa Rust main function |
 
 ## Running programs
@@ -106,5 +107,5 @@ for documentation, examples, and issue reporting.
 
 ## Release scope
 
-Version 1.2 provides highlighting, snippets, commands, live diagnostics, profile-aware completion,
+Version 1.3 adds a Django profile and starter workflow alongside highlighting, snippets, commands, live diagnostics, profile-aware completion,
 and hover help. Java and C++ remain future work.

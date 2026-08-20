@@ -61,6 +61,25 @@ aiki duk_dalibai():
     assert "@app.get" in translated
 
 
+def test_django_profile_translates_common_view_and_model_terms():
+    source = '''
+daga django.http shigo Amsar_HTTP, Amsar_JSON
+daga django.shortcuts shigo nuna_shafi, samo_ko_404
+daga django.db.models shigo Samfurin_Bayanai, Filin_Rubutu
+
+aiki gida(bukata):
+    mayar Amsar_JSON({"sako": "Sannu"})
+'''
+
+    translated = hausa_to_english(source, profile="django")
+
+    assert "from django.http import HttpResponse, JsonResponse" in translated
+    assert "from django.shortcuts import render, get_object_or_404" in translated
+    assert "from django.db.models import Model, CharField" in translated
+    assert "def gida(request):" in translated
+    assert "return JsonResponse" in translated
+
+
 def test_database_keywords_run_sqlite_workflow(tmp_path, capsys):
     db_path = (tmp_path / "dalibai.db").as_posix()
     source_file = tmp_path / "database_workflow.hausa"

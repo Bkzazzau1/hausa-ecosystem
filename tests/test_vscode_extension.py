@@ -24,7 +24,7 @@ def test_vscode_extension_registers_snippets():
 def test_vscode_extension_marketplace_metadata_and_docs_exist():
     package_json = json.loads((EXTENSION_DIR / "package.json").read_text(encoding="utf-8"))
     assert package_json["publisher"] == "hausaecosystem"
-    assert package_json["version"] == "1.2.0"
+    assert package_json["version"] == "1.3.0"
     assert package_json["icon"] == "images/icon.png"
     assert package_json["license"] == "SEE LICENSE IN LICENSE"
     assert package_json["repository"]["url"].startswith("https://github.com/")
@@ -147,7 +147,9 @@ def test_hausa_snippets_are_valid_json_and_include_backend_shortcuts():
     assert "SQLite Starter" in snippets
     assert "Flask Route" in snippets
     assert "FastAPI Route" in snippets
+    assert "Django JSON View" in snippets
     assert snippets["Hausa Print"]["prefix"] == "buga"
+    assert snippets["Django JSON View"]["prefix"] == "django-view"
 
 
 def test_hrust_snippets_are_valid_json_and_include_rust_shortcuts():

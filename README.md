@@ -9,8 +9,8 @@ it is not a separate VM or sandbox.
 - `.hausa` translation and execution on Python 3.10+
 - `.hrust` translation, checking, compilation, and execution with stable Rust
 - Hausa-localized diagnostics with source lines
-- Core, database, web, and complete vocabulary profiles
-- Flask, FastAPI, and SQLite learning-project generators
+- Core, database, web, Django, and complete vocabulary profiles
+- Flask, FastAPI, Django, and SQLite learning-project generators
 - File/project checks, CRUD API checks, and environment diagnostics
 - VS Code syntax highlighting and snippets
 
