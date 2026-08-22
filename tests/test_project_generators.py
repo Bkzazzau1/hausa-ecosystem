@@ -93,6 +93,40 @@ def test_generate_django_backend_project_and_translate_view(tmp_path):
     assert "from django.http import JsonResponse" in translated
     assert "def shafi_na_farko(request):" in translated
 
+    django_env = os.environ.copy()
+    django_env["DJANGO_ALLOWED_HOSTS"] = "testserver"
+    check = subprocess.run(
+        [sys.executable, "manage.py", "check"],
+        cwd=project_dir,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        env=django_env,
+    )
+    assert check.returncode == 0, check.stderr
+
+    request = subprocess.run(
+        [
+            sys.executable,
+            "-c",
+            (
+                "import os; "
+                "os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings'); "
+                "import django; django.setup(); "
+                "from django.test import Client; "
+                "response = Client().get('/'); "
+                "assert response.status_code == 200; "
+                "assert response.json()['sako'] == 'Sannu daga Hausa Django!'"
+            ),
+        ],
+        cwd=project_dir,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        env=django_env,
+    )
+    assert request.returncode == 0, request.stderr
+
 
 def test_generate_sqlite_database_project_and_run_it(tmp_path):
     project_dir = tmp_path / "my_db_app"
