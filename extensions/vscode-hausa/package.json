@@ -1,27 +1,106 @@
 {
   "name": "vscode-hausa",
+  "publisher": "hausaecosystem",
   "displayName": "Hausa Programming Language Support",
-  "description": "Syntax highlighting and language support for Hausa-Python and Hausa-Rust.",
-  "version": "1.0.0",
+  "description": "Syntax highlighting, snippets and language support for Hausa-Python and Hausa-Rust.",
+  "version": "1.3.0",
+  "icon": "images/icon.png",
+  "license": "SEE LICENSE IN LICENSE",
+  "homepage": "https://github.com/Bkzazzau1/hausa-ecosystem#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bkzazzau1/hausa-ecosystem.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Bkzazzau1/hausa-ecosystem/issues"
+  },
+  "pricing": "Free",
+  "galleryBanner": {
+    "color": "#123524",
+    "theme": "dark"
+  },
   "engines": {
     "vscode": "^1.80.0"
   },
-  "categories": [
-    "Programming Languages"
+  "main": "./extension.js",
+  "activationEvents": [
+    "onLanguage:hausa",
+    "onLanguage:hrust"
   ],
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Education"
+  ],
+  "keywords": ["hausa", "python", "rust", "programming", "education", "localization", "snippets"],
+  "extensionKind": ["ui", "workspace"],
+  "capabilities": {
+    "untrustedWorkspaces": {"supported": true},
+    "virtualWorkspaces": true
+  },
   "contributes": {
+    "commands": [
+      {"command": "hausa.runFile", "title": "Run Current File", "category": "Hausa"},
+      {"command": "hausa.checkFile", "title": "Check Current File", "category": "Hausa"},
+      {"command": "hausa.translateToEnglish", "title": "Translate Current File to English", "category": "Hausa"},
+      {"command": "hausa.translateToHausa", "title": "Translate Python/Rust File to Hausa", "category": "Hausa"},
+      {"command": "hausa.selectProfile", "title": "Select Vocabulary Profile", "category": "Hausa"}
+    ],
+    "menus": {
+      "editor/title/run": [
+        {"command": "hausa.runFile", "when": "resourceExtname == .hausa || resourceExtname == .hrust", "group": "navigation@10"}
+      ],
+      "editor/context": [
+        {"command": "hausa.runFile", "when": "resourceExtname == .hausa || resourceExtname == .hrust", "group": "hausa@1"},
+        {"command": "hausa.checkFile", "when": "resourceExtname == .hausa || resourceExtname == .hrust", "group": "hausa@2"},
+        {"command": "hausa.translateToEnglish", "when": "resourceExtname == .hausa || resourceExtname == .hrust", "group": "hausa@3"}
+      ]
+    },
+    "configuration": {
+      "title": "Hausa Programming",
+      "properties": {
+        "hausa.executablePath": {
+          "type": "string",
+          "default": "hausa",
+          "description": "Path or command name for the Hausa Ecosystem CLI."
+        },
+        "hausa.vocabularyProfile": {
+          "type": "string",
+          "enum": ["core", "builtins", "database", "flask", "fastapi", "django", "web", "all"],
+          "default": "all",
+          "description": "Vocabulary profile used for running and translating Hausa Python files."
+        },
+        "hausa.diagnosticsOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Check Hausa files and update the Problems panel whenever they are saved."
+        },
+        "hausa.diagnosticsOnType": {
+          "type": "boolean",
+          "default": false,
+          "description": "Check unsaved Hausa source after typing pauses. Disabled by default to avoid extra CLI processes."
+        },
+        "hausa.diagnosticsDelayMs": {
+          "type": "number",
+          "default": 750,
+          "minimum": 250,
+          "maximum": 5000,
+          "description": "Delay in milliseconds before checking unsaved Hausa source while typing."
+        }
+      }
+    },
     "languages": [
       {
         "id": "hausa",
         "aliases": ["Hausa Python", "hausa"],
         "extensions": [".hausa"],
-        "configuration": "./language-configuration.json"
+        "configuration": "./language-configuration-hausa.json"
       },
       {
         "id": "hrust",
         "aliases": ["Hausa Rust", "hrust"],
         "extensions": [".hrust"],
-        "configuration": "./language-configuration.json"
+        "configuration": "./language-configuration-hrust.json"
       }
     ],
     "grammars": [
@@ -34,6 +113,16 @@
         "language": "hrust",
         "scopeName": "source.hrust",
         "path": "./syntaxes/hrust.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "hausa",
+        "path": "./snippets/hausa.code-snippets"
+      },
+      {
+        "language": "hrust",
+        "path": "./snippets/hrust.code-snippets"
       }
     ]
   }

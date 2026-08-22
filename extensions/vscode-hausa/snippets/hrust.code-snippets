@@ -1,0 +1,52 @@
+{
+  "Hausa Rust Main": {
+    "prefix": "main",
+    "body": [
+      "jama'a aiki main() {",
+      "    ${1:println!(\"Sannu duniya\");}",
+      "}"
+    ],
+    "description": "Create a Hausa Rust main function"
+  },
+  "Hausa Rust Let": {
+    "prefix": "bari",
+    "body": [
+      "bari ${1:suna} = ${2:daraja};"
+    ],
+    "description": "Create an immutable variable"
+  },
+  "Hausa Rust Mutable Let": {
+    "prefix": "bari-sauya",
+    "body": [
+      "bari sauya ${1:suna} = ${2:daraja};"
+    ],
+    "description": "Create a mutable variable"
+  },
+  "Hausa Rust If": {
+    "prefix": "idan",
+    "body": [
+      "idan ${1:gaskiya} {",
+      "    ${2:println!(\"Yana aiki\");}",
+      "}"
+    ],
+    "description": "Create an if block"
+  },
+  "Hausa Rust For": {
+    "prefix": "ga",
+    "body": [
+      "ga ${1:abu} cikin ${2:abubuwa} {",
+      "    ${3:println!(\"{}\", abu);}",
+      "}"
+    ],
+    "description": "Create a for loop"
+  },
+  "Hausa Rust Function": {
+    "prefix": "aiki",
+    "body": [
+      "aiki ${1:suna_aiki}(${2}) {",
+      "    ${3:// rubuta code anan}",
+      "}"
+    ],
+    "description": "Create a Hausa Rust function"
+  }
+}

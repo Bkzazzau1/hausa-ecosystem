@@ -1,0 +1,2142 @@
+{
+  "python": {
+    "Abokin_Hadin_Mongo": {
+      "english": "MongoClient",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "Amsar_HTTP": {
+      "english": "HttpResponse",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "django",
+        "web"
+      ]
+    },
+    "Amsar_JSON": {
+      "english": "JsonResponse",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "django",
+        "web"
+      ]
+    },
+    "Dogaro": {
+      "english": "Depends",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "fastapi",
+        "web"
+      ]
+    },
+    "Filin": {
+      "english": "Field",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "fastapi",
+        "web"
+      ]
+    },
+    "Filin_Dogon_Rubutu": {
+      "english": "TextField",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "django",
+        "web"
+      ]
+    },
+    "Filin_Lamba": {
+      "english": "IntegerField",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "django",
+        "web"
+      ]
+    },
+    "Filin_Lokaci": {
+      "english": "DateTimeField",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "django",
+        "web"
+      ]
+    },
+    "Filin_Rubutu": {
+      "english": "CharField",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "django",
+        "web"
+      ]
+    },
+    "Injin_Yanar_Gizo": {
+      "english": "Flask",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "flask",
+        "web"
+      ]
+    },
+    "Kuskuren_HTTP": {
+      "english": "HTTPException",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "fastapi",
+        "web"
+      ]
+    },
+    "Mai_Hanya": {
+      "english": "APIRouter",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "fastapi",
+        "web"
+      ]
+    },
+    "Matsayi": {
+      "english": "status",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "fastapi",
+        "web"
+      ]
+    },
+    "Sabar_Uvicorn": {
+      "english": "uvicorn",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "fastapi",
+        "web"
+      ]
+    },
+    "Samfurin_Bayanai": {
+      "english": "Model",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "django",
+        "web"
+      ]
+    },
+    "Saurin_API": {
+      "english": "FastAPI",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "fastapi",
+        "web"
+      ]
+    },
+    "Tushen_Model": {
+      "english": "BaseModel",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "fastapi",
+        "web"
+      ]
+    },
+    "abu": {
+      "english": "object",
+      "category": "type",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "adana": {
+      "english": "save",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "aika": {
+      "english": "post",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "aiki": {
+      "english": "def",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "aikin_aji": {
+      "english": "classmethod",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "aikin_tsaye": {
+      "english": "staticmethod",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "aiwatar": {
+      "english": "execute",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "aiwatar_da_yawa": {
+      "english": "executemany",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "aiwatar_rubutu": {
+      "english": "exec",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "aji": {
+      "english": "class",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "ajiye": {
+      "english": "commit",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "alamun_haske": {
+      "english": "lambda",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "amsa": {
+      "english": "response",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "flask",
+        "web"
+      ]
+    },
+    "askil": {
+      "english": "ascii",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "ba": {
+      "english": "not",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "ba_na_ciki": {
+      "english": "nonlocal",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "babban_gari": {
+      "english": "global",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "babu": {
+      "english": "None",
+      "category": "constant",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "babu_guda": {
+      "english": "async",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "baitoci": {
+      "english": "bytes",
+      "category": "type",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "bayar": {
+      "english": "yield",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "binciko": {
+      "english": "SELECT",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "biyu_biyu": {
+      "english": "tuple",
+      "category": "type",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "bude_fayil": {
+      "english": "open",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "bude_hanya": {
+      "english": "route",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "flask",
+        "web"
+      ]
+    },
+    "bude_rufa": {
+      "english": "connect",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "buga": {
+      "english": "print",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "bukata": {
+      "english": "request",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "django",
+        "flask",
+        "web"
+      ]
+    },
+    "buƙata": {
+      "english": "request",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "django",
+        "flask",
+        "web"
+      ]
+    },
+    "cikakkiyar_daraja": {
+      "english": "abs",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "cikin": {
+      "english": "in",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "dace": {
+      "english": "match",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "daga": {
+      "english": "from",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "daukaka": {
+      "english": "pow",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "duk_gaskiya": {
+      "english": "all",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "duka": {
+      "english": "all",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "farko": {
+      "english": "first",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "ga": {
+      "english": "for",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "gaskiya": {
+      "english": "True",
+      "category": "constant",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "gaskiya_ko_karya": {
+      "english": "bool",
+      "category": "type",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "goge": {
+      "english": "del",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "goge_daga": {
+      "english": "DELETE",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "goge_hanya": {
+      "english": "delete",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "goge_sifa": {
+      "english": "delattr",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "gudanar": {
+      "english": "run",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "fastapi",
+        "web"
+      ]
+    },
+    "gwada": {
+      "english": "try",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "gyara_sashe": {
+      "english": "patch",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "hada_jeri": {
+      "english": "zip",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "hada_shiri": {
+      "english": "compile",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "hada_urls": {
+      "english": "include",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "django",
+        "web"
+      ]
+    },
+    "hali": {
+      "english": "case",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "hanyar_url": {
+      "english": "path",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "django",
+        "web"
+      ]
+    },
+    "harafi": {
+      "english": "chr",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "hawa": {
+      "english": "asc",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "idan": {
+      "english": "if",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "in_ba_haka_ba": {
+      "english": "else",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "janye": {
+      "english": "rollback",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "jera": {
+      "english": "sorted",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "jeri": {
+      "english": "list",
+      "category": "type",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "jerin_baiti": {
+      "english": "bytearray",
+      "category": "type",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "jimla": {
+      "english": "sum",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "jira": {
+      "english": "await",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "juya_baya": {
+      "english": "reversed",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "juya_zuwa_json": {
+      "english": "jsonify",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "flask",
+        "web"
+      ]
+    },
+    "kallon_ma_ajiya": {
+      "english": "memoryview",
+      "category": "type",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "kama": {
+      "english": "except",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "kamar": {
+      "english": "as",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "karamin_aji_ne": {
+      "english": "issubclass",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "karanta_json": {
+      "english": "get_json",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "flask",
+        "web"
+      ]
+    },
+    "karba_duka": {
+      "english": "fetchall",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "karba_guda": {
+      "english": "fetchone",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "karshe": {
+      "english": "finally",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "karya": {
+      "english": "False",
+      "category": "constant",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "kewayo": {
+      "english": "range",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "kimanta": {
+      "english": "eval",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "kirga_jeri": {
+      "english": "enumerate",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "kirkiro": {
+      "english": "create",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "ko": {
+      "english": "or",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "kuma": {
+      "english": "and",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "kundin_siffofi": {
+      "english": "dir",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "kunshe_bayanai": {
+      "english": "collection",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "lamba": {
+      "english": "int",
+      "category": "type",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "lamba_dige": {
+      "english": "float",
+      "category": "type",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "lamba_hadaddiya": {
+      "english": "complex",
+      "category": "type",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "lambar_harafi": {
+      "english": "ord",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "layuka": {
+      "english": "rowcount",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "mafi_girma": {
+      "english": "max",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "mafi_karami": {
+      "english": "min",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "mai_kira": {
+      "english": "callable",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "mai_maimaitawa": {
+      "english": "iter",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "mai_maimaitawa_maras_jira": {
+      "english": "aiter",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "makullai": {
+      "english": "dict",
+      "category": "type",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "mayar": {
+      "english": "return",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "na_gaba": {
+      "english": "next",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "na_gaba_maras_jira": {
+      "english": "anext",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "nau_i": {
+      "english": "type",
+      "category": "type",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "nau_in_abu_ne": {
+      "english": "isinstance",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "nemo": {
+      "english": "find",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "nemo_guda": {
+      "english": "find_one",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "nemo_ko_404": {
+      "english": "get_or_404",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "nuna_shafi": {
+      "english": "render",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "django",
+        "web"
+      ]
+    },
+    "oda_da": {
+      "english": "order_by",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "rabo_da_saura": {
+      "english": "divmod",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "rubutu": {
+      "english": "str",
+      "category": "type",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "rufe": {
+      "english": "close",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "rufe_sirri": {
+      "english": "hashlib",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "flask",
+        "web"
+      ]
+    },
+    "sabon_id": {
+      "english": "lastrowid",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "sabunta": {
+      "english": "UPDATE",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "saita_sifa": {
+      "english": "setattr",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "saiti": {
+      "english": "set",
+      "category": "type",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "saitin_daskare": {
+      "english": "frozenset",
+      "category": "type",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "saka": {
+      "english": "put",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "saka_cikin": {
+      "english": "INSERT",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "saka_guda": {
+      "english": "insert_one",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "samo_ko_404": {
+      "english": "get_object_or_404",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "django",
+        "web"
+      ]
+    },
+    "samu": {
+      "english": "get",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "samu_cursor": {
+      "english": "cursor",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "samu_sifa": {
+      "english": "getattr",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "sauka": {
+      "english": "desc",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "sauran_idan": {
+      "english": "elif",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "sauye_sauye": {
+      "english": "vars",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "shafi": {
+      "english": "paginate",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "shaida": {
+      "english": "id",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "shi_ne": {
+      "english": "is",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "shigar": {
+      "english": "input",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "shigo": {
+      "english": "import",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "shigo_na_ciki": {
+      "english": "__import__",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "sifa": {
+      "english": "property",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "sunayen_ciki": {
+      "english": "locals",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "sunayen_duniya": {
+      "english": "globals",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "tabbatar": {
+      "english": "assert",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "tace": {
+      "english": "filter",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "builtins",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "tace_da": {
+      "english": "filter_by",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "tada": {
+      "english": "raise",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "taimako": {
+      "english": "help",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "takarda": {
+      "english": "document",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "tambarin_hash": {
+      "english": "hash",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "tare_da": {
+      "english": "with",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "taswira": {
+      "english": "map",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "tebur": {
+      "english": "TABLE",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "database",
+        "django",
+        "fastapi",
+        "flask"
+      ]
+    },
+    "tsara": {
+      "english": "format",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "tsarin_bayanai": {
+      "english": "dict",
+      "category": "type",
+      "profiles": [
+        "all",
+        "flask",
+        "web"
+      ]
+    },
+    "tsarin_biyu": {
+      "english": "bin",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "tsarin_goma_sha_shida": {
+      "english": "hex",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "tsarin_takwas": {
+      "english": "oct",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "tsawo": {
+      "english": "len",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "tsaya": {
+      "english": "break",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "tura_sabon_wuri": {
+      "english": "redirect",
+      "category": "framework",
+      "profiles": [
+        "all",
+        "django",
+        "web"
+      ]
+    },
+    "uwar_aji": {
+      "english": "super",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "wakilci": {
+      "english": "repr",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "wani_gaskiya": {
+      "english": "any",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "wuce": {
+      "english": "continue",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "wuce_kawai": {
+      "english": "pass",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "wurin_tsayawa": {
+      "english": "breakpoint",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "yana_da_sifa": {
+      "english": "hasattr",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "yanki": {
+      "english": "slice",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    },
+    "yayin": {
+      "english": "while",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "builtins",
+        "core",
+        "database",
+        "django",
+        "fastapi",
+        "flask",
+        "web"
+      ]
+    },
+    "zagaye_lamba": {
+      "english": "round",
+      "category": "builtin",
+      "profiles": [
+        "all",
+        "builtins"
+      ]
+    }
+  },
+  "rust": {
+    "KAI_TSAYE": {
+      "english": "Self",
+      "category": "declaration",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "aiki": {
+      "english": "fn",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "aiwatar": {
+      "english": "impl",
+      "category": "declaration",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "aji": {
+      "english": "class",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "akwati": {
+      "english": "crate",
+      "category": "declaration",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "amfani": {
+      "english": "use",
+      "category": "declaration",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "babba": {
+      "english": "super",
+      "category": "declaration",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "babu_guda": {
+      "english": "async",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "bari": {
+      "english": "let",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "cikin": {
+      "english": "in",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "dace": {
+      "english": "match",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "ga": {
+      "english": "for",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "gaskiya": {
+      "english": "true",
+      "category": "constant",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "hadari": {
+      "english": "unsafe",
+      "category": "declaration",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "hali": {
+      "english": "trait",
+      "category": "declaration",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "idan": {
+      "english": "if",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "in_ba_haka_ba": {
+      "english": "else",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "inda": {
+      "english": "where",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "jama'a": {
+      "english": "pub",
+      "category": "declaration",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "jira": {
+      "english": "await",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "kai_tsaye": {
+      "english": "self",
+      "category": "declaration",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "kamar": {
+      "english": "as",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "karya": {
+      "english": "false",
+      "category": "constant",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "lissafi": {
+      "english": "enum",
+      "category": "declaration",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "mayar": {
+      "english": "return",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "motsa": {
+      "english": "move",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "nau'i": {
+      "english": "type",
+      "category": "declaration",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "nuni": {
+      "english": "ref",
+      "category": "declaration",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "sashe": {
+      "english": "mod",
+      "category": "declaration",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "sauya": {
+      "english": "mut",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "sauye_sauye": {
+      "english": "dyn",
+      "category": "declaration",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "tabbatacce": {
+      "english": "const",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "tsari": {
+      "english": "struct",
+      "category": "declaration",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "tsaya": {
+      "english": "break",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "tsayayye": {
+      "english": "static",
+      "category": "declaration",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "waje": {
+      "english": "extern",
+      "category": "declaration",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "wuce": {
+      "english": "continue",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "yayin": {
+      "english": "while",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    },
+    "zagaye": {
+      "english": "loop",
+      "category": "keyword",
+      "profiles": [
+        "all",
+        "core"
+      ]
+    }
+  }
+}

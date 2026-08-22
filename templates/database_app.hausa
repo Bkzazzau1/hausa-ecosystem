@@ -1,0 +1,47 @@
+# Misalin database da Hausa Python + SQLite
+# Wannan zai kirkiri local database file idan ka gudu da shi.
+
+daga sqlite3 shigo bude_rufa
+
+
+aiki bude_database(hanya="backend_demo.db"):
+    hadi = bude_rufa(hanya)
+    mai_aiki = hadi.samu_cursor()
+
+    mai_aiki.aiwatar("""
+        CREATE TABLE IF NOT EXISTS dalibai (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            suna TEXT NOT NULL,
+            darasi TEXT NOT NULL
+        )
+    """)
+
+    hadi.ajiye()
+    mayar hadi
+
+
+aiki saka_dalibi(hadi, suna, darasi):
+    mai_aiki = hadi.samu_cursor()
+    mai_aiki.aiwatar(
+        "INSERT INTO dalibai (suna, darasi) VALUES (?, ?)",
+        (suna, darasi),
+    )
+    hadi.ajiye()
+    mayar mai_aiki.sabon_id
+
+
+aiki jerin_dalibai(hadi):
+    mai_aiki = hadi.samu_cursor()
+    mai_aiki.aiwatar("SELECT id, suna, darasi FROM dalibai ORDER BY id DESC")
+    mayar mai_aiki.karba_duka()
+
+
+idan __name__ == "__main__":
+    db = bude_database()
+    saka_dalibi(db, "Bashir", "Hausa Python Backend")
+    saka_dalibi(db, "Aisha", "Database")
+
+    ga dalibi cikin jerin_dalibai(db):
+        buga(dalibi)
+
+    db.rufe()

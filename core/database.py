@@ -1,11 +1,26 @@
 # core/database.py
+import os
 import sqlite3
 from pathlib import Path
 
-DB_PATH = Path(__file__).resolve().parent.parent / "hausa_tech.db"
+
+def user_data_directory():
+    """Return a writable per-user data directory without touching the install."""
+    configured = os.environ.get("HAUSA_DATA_DIR")
+    if configured:
+        return Path(configured).expanduser()
+    if os.name == "nt":
+        base = Path(os.environ.get("LOCALAPPDATA", Path.home() / "AppData" / "Local"))
+    else:
+        base = Path(os.environ.get("XDG_DATA_HOME", Path.home() / ".local" / "share"))
+    return base / "hausa-ecosystem"
+
+
+DB_PATH = user_data_directory() / "vocabulary.db"
 
 
 def get_connection():
+    DB_PATH.parent.mkdir(parents=True, exist_ok=True)
     return sqlite3.connect(DB_PATH)
 
 
@@ -52,24 +67,33 @@ def seed_table(cursor, table_name, data_dict, key_col, val_col):
 
 
 def load_dictionary_from_db():
-    """Queries the live database to build dynamic runtime conversion maps."""
-    initialize_database()
+    """Load built-ins plus optional overrides from a per-user database.
 
-    conn = get_connection()
-    cursor = conn.cursor()
+    Importing Hausa Ecosystem never creates files.  A database is read only
+    when the user has explicitly initialized one.
+    """
+    from core.dictionary import PYTHON_ERRORS, PYTHON_KEYWORDS, RUST_ERRORS, RUST_KEYWORDS
 
-    cursor.execute("SELECT hausa_word, english_word FROM python_keywords")
-    py_keywords = {row[0]: row[1] for row in cursor.fetchall()}
+    py_keywords = dict(PYTHON_KEYWORDS)
+    rust_keywords = dict(RUST_KEYWORDS)
+    errors = {**PYTHON_ERRORS, **RUST_ERRORS}
+    if not DB_PATH.exists():
+        return py_keywords, rust_keywords, errors
 
-    cursor.execute("SELECT hausa_word, english_word FROM rust_keywords")
-    rust_keywords = {row[0]: row[1] for row in cursor.fetchall()}
-
-    cursor.execute("SELECT error_key, hausa_translation FROM system_errors")
-    errors = {row[0]: row[1] for row in cursor.fetchall()}
-
-    conn.close()
+    conn = sqlite3.connect(DB_PATH)
+    try:
+        cursor = conn.cursor()
+        cursor.execute("SELECT hausa_word, english_word FROM python_keywords")
+        py_keywords.update(cursor.fetchall())
+        cursor.execute("SELECT hausa_word, english_word FROM rust_keywords")
+        rust_keywords.update(cursor.fetchall())
+        cursor.execute("SELECT error_key, hausa_translation FROM system_errors")
+        errors.update(cursor.fetchall())
+    finally:
+        conn.close()
+    # Normalize a mojibake alias written by pre-1.0 development databases.
+    # Keep the ASCII spelling too, but never expose the corrupted token.
+    if "buÆ™ata" in py_keywords:
+        py_keywords.setdefault("buƙata", py_keywords["buÆ™ata"])
+        del py_keywords["buÆ™ata"]
     return py_keywords, rust_keywords, errors
-
-
-if not DB_PATH.exists():
-    initialize_database()

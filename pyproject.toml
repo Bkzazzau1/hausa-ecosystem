@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hausa-ecosystem"
+version = "1.0.0"
+description = "Beginner-friendly Hausa vocabulary for Python and Rust"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [{name = "Hausa Ecosystem contributors"}]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Operating System :: OS Independent",
+]
+
+[project.scripts]
+hausa = "hausa_ecosystem.cli:main"
+hausa-check = "hausa_ecosystem.check_cli:main"
+hausa-scan = "hausa_ecosystem.scan_cli:main"
+
+[tool.setuptools.packages.find]
+include = ["core*", "hausa_ecosystem*"]
+
+[tool.setuptools.data-files]
+"share/hausa-ecosystem/docs" = ["docs/*.md"]
+"share/hausa-ecosystem/templates" = ["templates/*.hausa", "templates/*.hrust"]
+"share/hausa-ecosystem/vscode" = ["extensions/vscode-hausa/*.json"]
+"share/hausa-ecosystem/vscode/syntaxes" = ["extensions/vscode-hausa/syntaxes/*.json"]
+"share/hausa-ecosystem/vscode/snippets" = ["extensions/vscode-hausa/snippets/*.json"]

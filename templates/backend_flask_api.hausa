@@ -1,0 +1,66 @@
+# Misalin full backend API da Hausa Python + Flask + SQLite
+# Bukata: pip install flask
+
+daga flask shigo Injin_Yanar_Gizo, juya_zuwa_json, bukata
+daga sqlite3 shigo bude_rufa
+
+injin = Injin_Yanar_Gizo(__name__)
+
+
+aiki samun_hadi():
+    hadi = bude_rufa("backend_api.db")
+    mai_aiki = hadi.samu_cursor()
+    mai_aiki.aiwatar("""
+        CREATE TABLE IF NOT EXISTS dalibai (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            suna TEXT NOT NULL,
+            darasi TEXT NOT NULL
+        )
+    """)
+    hadi.ajiye()
+    mayar hadi
+
+
+@injin.bude_hanya("/", methods=["GET"])
+aiki gida():
+    mayar juya_zuwa_json({"sako": "Hausa Backend API yana aiki"})
+
+
+@injin.bude_hanya("/dalibai", methods=["GET"])
+aiki duk_dalibai():
+    hadi = samun_hadi()
+    mai_aiki = hadi.samu_cursor()
+    mai_aiki.aiwatar("SELECT id, suna, darasi FROM dalibai ORDER BY id DESC")
+    sakamako = mai_aiki.karba_duka()
+    hadi.rufe()
+
+    mayar juya_zuwa_json([
+        {"id": layi[0], "suna": layi[1], "darasi": layi[2]}
+        ga layi cikin sakamako
+    ])
+
+
+@injin.bude_hanya("/dalibai", methods=["POST"])
+aiki kirkiri_dalibi():
+    bayanai = bukata.karanta_json() ko {}
+    suna = bayanai.samu("suna")
+    darasi = bayanai.samu("darasi")
+
+    idan ba suna ko ba darasi:
+        mayar juya_zuwa_json({"kuskure": "suna da darasi sun zama dole"}), 400
+
+    hadi = samun_hadi()
+    mai_aiki = hadi.samu_cursor()
+    mai_aiki.aiwatar(
+        "INSERT INTO dalibai (suna, darasi) VALUES (?, ?)",
+        (suna, darasi),
+    )
+    hadi.ajiye()
+    sabon_id = mai_aiki.sabon_id
+    hadi.rufe()
+
+    mayar juya_zuwa_json({"id": sabon_id, "suna": suna, "darasi": darasi}), 201
+
+
+idan __name__ == "__main__":
+    injin.run(host="127.0.0.1", port=5000, debug=gaskiya)
